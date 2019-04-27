@@ -1,0 +1,37 @@
+/* pages/collection/collection.wxss */
+.Containerbook{
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.bookImage{
+  width:128rpx;
+  
+  height: 128rpx;
+}
+.bookCon{
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+  margin-left: 20rpx;
+}
+.bookname{
+   
+   font-size: 32rpx;
+   font-weight: bolder;
+   /*文本...形式*/
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow:ellipsis;
+}
+.bookcountry{
+   font-size: 32rpx;
+   font-weight: bolder;
+}
+.bookdirector{
+   font-size: 32rpx;
+   font-weight: bolder;
+   }
+.Layout{
+  width: 120rpx;
+}

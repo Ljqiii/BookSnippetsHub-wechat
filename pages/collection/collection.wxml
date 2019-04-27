@@ -1,0 +1,16 @@
+<!--pages/collection/collection.wxml-->
+  <block wx:for='{{Arraylist}}'>
+  <view class='Containerbook'>
+
+  <view class='Layout'>
+  <image class='bookImage' src='/images/2.jpg'></image>
+  </view>
+  <view class='bookCon'>
+    <text class='bookname' >书籍名字</text>
+    <text class='bookcountry'>出版国家</text>
+    <text class='bookdirector'>作者</text>
+  </view>
+ 
+ </view>
+  </block>
+

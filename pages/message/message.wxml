@@ -1,0 +1,10 @@
+<!--pages/message/message.wxml-->
+<view bindtap='handle_message' class='Container_all'>
+<view class='imgae_handle'>
+<image class='image_css' src="/images/3.jpg"></image>
+<view class='text_css'>
+<text class='name_fa'>昵称</text>
+<text class='say_what'>说了什么</text>
+</view>
+</view>
+</view>

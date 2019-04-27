@@ -1,0 +1,30 @@
+/* pages/message/message.wxss */
+.Container_all{
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+.imgae_handle{
+ margin: 10rpx;
+ display: flex;
+}
+.image_css{
+  width:140rpx;
+  height: 140rpx;
+  vertical-align: middle;
+}
+.text_css{
+  margin-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+.name_fa{
+ font-size: 46rpx;
+ color: red;
+ margin-bottom: 14rpx;
+}
+.say_what{
+ font-size: 46rpx;
+}

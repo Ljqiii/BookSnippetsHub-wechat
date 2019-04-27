@@ -1,5 +1,10 @@
 {
   "pages": [
+    "pages/discovery/discovery",
+    "pages/collection/collection",
+    "pages/message/message",
+    "pages/me/me",
+
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -8,6 +13,34 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/discovery/discovery",
+        "text": "发现",
+        "iconPath": "/img/1.png",
+        "selectedIconPath": "/img/1.png"
+      },
+      {
+        "pagePath": "pages/collection/collection",
+        "text": "收集",
+        "iconPath": "/img/1.png",
+        "selectedIconPath": "/img/1.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "/img/1.png",
+        "selectedIconPath": "/img/1.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "/img/1.png",
+        "selectedIconPath": "/img/1.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

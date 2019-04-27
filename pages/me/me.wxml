@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!--pages/me/me.wxml-->
 <view class="container">
     <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> test </button>
 
