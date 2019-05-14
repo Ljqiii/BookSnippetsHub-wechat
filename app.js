@@ -23,16 +23,14 @@ App({
             var thatt=that
             console.log(res.data)
             if (res.data.errcode == 0) {
+
               wx.setStorageSync("token", res.data.token)
               wx.setStorageSync("hasuserinfo", res.data.hasuserinfo)
 
               if (res.data.hasuserinfo == false) {
-
-
                 // 获取用户信息
                 wx.getSetting({
                   success: res => {
-
                     var thattt=thatt
                     if (res.authSetting['scope.userInfo']) {
                       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
@@ -90,7 +88,6 @@ App({
       }
     })
   },
-
 
   globalData: {
     userInfo: null,

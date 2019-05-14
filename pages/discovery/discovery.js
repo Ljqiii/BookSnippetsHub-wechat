@@ -75,24 +75,6 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  test: () => {
-    wx.pro.request({
-      url: 'http://127'
-    }).catch(res => {
-      console.log(res)
-    })
-    wx.pro.request({
-      url: 'http://baidu.com',
-    }).then(res => {
-      console.log(res)
-    })
-    wx.pro.request({
-      url: 'http://baidu.com',
-    }).then(res => {
-      console.log(res)
-    })
-
-
   }
+
 })

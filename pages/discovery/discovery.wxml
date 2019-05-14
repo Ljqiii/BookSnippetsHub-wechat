@@ -1,6 +1,6 @@
 <!--pages/del_collction/del_collection.wxml-->
 <view>
-  <button bindtap='test'>testrequest</button>
+
   <swiper indicator-dots="true" indicator-color="green" indicator-active-color="red" autoplay="true" interval="3000">
     <swiper-item>
       <image catchtap='handleImage' src='/img/1.png'></image>
