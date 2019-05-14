@@ -1,0 +1,5 @@
+<!--pages/add/add.wxml-->
+<text>pages/add/add.wxml</text>
+
+
+<input name="content" value='{{}}'></input>

@@ -4,9 +4,10 @@
     "pages/collection/collection",
     "pages/message/message",
     "pages/me/me",
-
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/error/error",
+    "pages/add/add"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,6 +26,12 @@
       {
         "pagePath": "pages/collection/collection",
         "text": "收集",
+        "iconPath": "/img/1.png",
+        "selectedIconPath": "/img/1.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "add",
         "iconPath": "/img/1.png",
         "selectedIconPath": "/img/1.png"
       },

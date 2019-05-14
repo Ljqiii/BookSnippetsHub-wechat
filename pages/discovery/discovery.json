@@ -1,5 +1,9 @@
 {
   "navigationBarBackgroundColor": "#1D82FE",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "精选"
+  "navigationBarTitleText": "精选",
+
+  "usingComponents":{
+    "vant-button":"/vant/button/index"
+  }
 }

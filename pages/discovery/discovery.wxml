@@ -1,25 +1,23 @@
 <!--pages/del_collction/del_collection.wxml-->
 <view>
-<swiper indicator-dots="true" indicator-color="green" indicator-active-color="red" autoplay="true" interval="3000">
-<swiper-item >
-<image catchtap='handleImage' src='/images/2.jpg'></image>
-</swiper-item >
-<swiper-item >
-<image catchtap='handleImage2' src='/images/3.jpg'></image>
-</swiper-item>
-<swiper-item >
-<image catchtap='handleImage3' src='/images/2.jpg'></image>
-</swiper-item>
-<swiper-item >
-<image catchtap='handleImage4' src='/images/3.jpg'></image>
-</swiper-item>
-</swiper>
+  <button bindtap='test'>testrequest</button>
+  <swiper indicator-dots="true" indicator-color="green" indicator-active-color="red" autoplay="true" interval="3000">
+    <swiper-item>
+      <image catchtap='handleImage' src='/img/1.png'></image>
+    </swiper-item>
+    <swiper-item>
+      <image catchtap='handleImage2' src='/img/1.png'></image>
+    </swiper-item>
+    <swiper-item>
+      <image catchtap='handleImage3' src='/img/1.png'></image>
+    </swiper-item>
+    <swiper-item>
+      <image catchtap='handleImage4' src='/img/1.png'></image>
+    </swiper-item>
+  </swiper>
 </view>
-<import src='/pages/template/template.wxml' />
+
 <text class='text'>小编精选</text>
 <block wx:for='{{Arrarlist}}'>
-<view>
- <template is='templateModel'>
-</template>
-</view>
+
 </block>
