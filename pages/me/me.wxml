@@ -1,7 +1,16 @@
 <!--pages/me/me.wxml-->
-<view class="container">
-    <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> test </button>
 
+<view wx:if="{{hasUserInfo}}">
+  <image src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <text>{{userInfo.nickName}}</text>
+</view>
+
+<view wx:else>
+<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+</view>
+
+<!-- 
+<view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -12,17 +21,4 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-</view>
-
-
-
-
-
-
-
-
-
-
-
-
-serfgsdfsddsertfdesrferse
+</view> -->

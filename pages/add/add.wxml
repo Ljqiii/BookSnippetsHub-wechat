@@ -1,5 +1,26 @@
-<!--pages/add/add.wxml-->
-<text>pages/add/add.wxml</text>
+<image mode="aspectFill" style='z-index:-100;position: fixed;left: 0rpx;top:0px;width:750rpx' src='{{bgimgurl}}'>
+</image>
+
+<text>书名</text>
+<input confirm-type="next" bindinput='inputbookname'></input>
+
+<text>书内容</text>
+<input confirm-type="next" bindinput='inputbookcontent'></input>
+
+<text>书评论</text>
+<input confirm-type="done" bindinput='inputbookcomment'></input>
 
 
-<input name="content" value='{{}}'></input>
+
+<scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='bottom'>
+  <view wx:for="{{backgroundimages}}" class='scroll-x-item'>
+    <view>
+      <image src='{{baseurl}}{{item.uri}}' mode="aspectFill" data-imgid='{{item.id}}' data-imguri='{{baseurl}}{{item.uri}}' bindtap='setbgimgid'>
+      </image>
+    </view>
+    <text>{{item.name}}</text>
+  </view>
+</scroll-view>
+
+
+<button style='position: fixed;left: 0rpx;bottom: 00rpx;width:750rpx' bindtap='send'>发布</button>

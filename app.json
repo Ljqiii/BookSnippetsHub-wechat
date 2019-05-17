@@ -20,32 +20,32 @@
       {
         "pagePath": "pages/discovery/discovery",
         "text": "发现",
-        "iconPath": "/img/1.png",
-        "selectedIconPath": "/img/1.png"
+        "iconPath": "/img/find.png",
+        "selectedIconPath": "/img/findfill.png"
       },
       {
         "pagePath": "pages/collection/collection",
         "text": "收集",
-        "iconPath": "/img/1.png",
-        "selectedIconPath": "/img/1.png"
+        "iconPath": "/img/book.png",
+        "selectedIconPath": "/img/bookfill.png"
       },
       {
         "pagePath": "pages/add/add",
-        "text": "add",
-        "iconPath": "/img/1.png",
-        "selectedIconPath": "/img/1.png"
+        "text": "发布",
+        "iconPath": "/img/add.png",
+        "selectedIconPath": "/img/addfill.png"
       },
       {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "/img/1.png",
-        "selectedIconPath": "/img/1.png"
+        "iconPath": "/img/msg.png",
+        "selectedIconPath": "/img/msgfill.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "我",
-        "iconPath": "/img/1.png",
-        "selectedIconPath": "/img/1.png"
+        "iconPath": "/img/me.png",
+        "selectedIconPath": "/img/mefill.png"
       }
     ]
   },

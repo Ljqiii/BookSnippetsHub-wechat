@@ -20,6 +20,8 @@ Page({
    */
   onLoad: function(options) {
 
+
+
   },
 
   /**
@@ -34,6 +36,27 @@ Page({
    */
   onShow: function() {
 
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          console.log("in auth")
+          var that = this
+          wx.getUserInfo({
+            success: function(res) {
+              console.log(res)
+              that.setData({
+                userInfo: res.userInfo,
+                hasUserInfo: true
+              })
+            }
+          })
+        } else {
+          console.log("donot have user info")
+        }
+      }
+    })
+
   },
 
   /**
@@ -47,6 +70,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
+
 
   },
 
@@ -70,12 +94,27 @@ Page({
   onShareAppMessage: function() {
 
   },
-  getUserInfo: function (e) {
+
+  getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+
+    wx.request({
+      url: app.globalData.baseurl + "/auth/uploadWxUserinfo",
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      data: {
+        userinfo: e.detail.userInfo
+      },
+      success: res => {
+        wx.setStorageSync("hasuserinfo", true)
+      }
     })
   }
 })

@@ -1,1 +1,36 @@
-/* pages/add/add.wxss */
+.img {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.bgimg {
+  background: url('http://127.0.0.1:8080/bgimg/red.png');
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+}
+
+.transparent-input {
+  background-color: transparent;
+}
+
+.scroll-x-item {  
+  text-align: center;
+  width: 215rpx;
+  height: 230rpx;
+  display: inline-block;
+}
+
+.scroll-x-item image {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  width: 195rpx;
+  height: 195rpx;
+}
+
+.bottom {
+  position: fixed;
+  left: 0rpx;
+  bottom: 100rpx;
+}
+

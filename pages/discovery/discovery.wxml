@@ -18,6 +18,5 @@
 </view>
 
 <text class='text'>小编精选</text>
-<block wx:for='{{Arrarlist}}'>
 
-</block>
+
