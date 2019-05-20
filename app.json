@@ -8,7 +8,8 @@
     "pages/logs/logs",
     "pages/error/error",
     "pages/add/add",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/book/book"
   ],
   "window": {
     "backgroundTextStyle": "light",

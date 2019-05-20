@@ -27,7 +27,7 @@ App({
           },
           success: function(res) {
             var thatt = that
-            console.log(res.data)
+            // console.log(res.data)
             if (res.data.errcode == 0) {
 
               wx.setStorageSync("token", res.data.token)
@@ -39,7 +39,7 @@ App({
                 success: res => {
                   var thattt = thatt
                   if (res.authSetting['scope.userInfo']) {
-                    console.log("已经授权")
+                    // console.log("已经授权")
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                     wx.getUserInfo({
                       success: res => {

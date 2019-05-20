@@ -25,3 +25,4 @@
     <van-button type="default">删除</van-button>
   </view>
 </van-popup>
+

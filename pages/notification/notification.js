@@ -10,14 +10,16 @@ Page({
     popupnotificationindex: -1,
 
   },
+  onReachBottom: function() {
+    console.log("safds")
+  },
 
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading()
- 
-      console.log("====")
-      this.getnotification()
-
-   
+    setTimeout(function(){
+      console.log("logonPullDownRefresh")
+    },1000)
+    this.getnotification()
   },
 
   getnotification: function() {
@@ -30,6 +32,7 @@ Page({
           that.setData({
             notifications: res.data
           })
+          wx.hideNavigationBarLoading()
           wx.stopPullDownRefresh()
         },
         header: {
@@ -44,7 +47,6 @@ Page({
     this.setData({
       baseurl: app.globalData.baseurl
     })
-
 
     this.getnotification()
 
@@ -61,6 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    console.log("on show")
 
   },
 
@@ -68,6 +71,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
+    console.log("on hide")
 
   },
 
@@ -78,19 +82,7 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
 
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
 
   /**
    * 用户点击右上角分享

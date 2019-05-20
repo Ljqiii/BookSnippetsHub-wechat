@@ -1,16 +1,15 @@
-<!--pages/collection/collection.wxml-->
-  <block wx:for='{{Arraylist}}'>
-  <view class='Containerbook'>
+<van-tabs active="0" bind:change="onChange" animated>
+  <van-tab title="关注">
+    <include src="alllikebook.wxml" />
+  </van-tab>
 
-  <view class='Layout'>
-  <image class='bookImage' src='/images/2.jpg'></image>
-  </view>
-  <view class='bookCon'>
-    <text class='bookname' >书籍名字</text>
-    <text class='bookcountry'>出版国家</text>
-    <text class='bookdirector'>作者</text>
-  </view>
- 
- </view>
-  </block>
+  <van-tab title="所有">
+    <include src="allbook.wxml" />
+  </van-tab>
+</van-tabs>
+
+
+
+
+
 

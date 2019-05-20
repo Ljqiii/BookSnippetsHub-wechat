@@ -3,15 +3,46 @@ const app = getApp()
 Page({
 
   data: {
-    
-
-    Arrarlist: [1, 2, 3, 4, 1, 1, 1, 1]
+    baseurl: "",
+    alllikebook: [],
+    allrecommendfeedsid: [1, 23],
+    recommendfeeds: []
+  },
+  navigateToBookPage: function(e) {
+    console.log(e)
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  getrecommendfeed: function() {
+    var that = this
+    if (wx.getStorageSync("hasuserinfo") == true) {
+      wx.request({
+        url: app.globalData.baseurl + "/getrecommendfeed",
+        method: "POST",
+
+        data: {
+          allrecommendfeedsid: that.data.allrecommendfeedsid
+        },
+        success: function(res) {
+          console.log(res)
+          that.setData({
+            recommendfeeds: that.data.recommendfeeds.concat(res.data)
+          })
+        },
+        header: {
+          Authorization: wx.getStorageSync("token")
+        }
+      })
+    }
+  },
+
+
+
   onLoad: function(options) {
+    this.setData({
+      baseurl: app.globalData.baseurl
+    })
+
+    this.getrecommendfeed()
 
   },
   handleShare: () => {

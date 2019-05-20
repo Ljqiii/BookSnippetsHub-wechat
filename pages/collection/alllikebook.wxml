@@ -1,0 +1,11 @@
+<block wx:for='{{alllikebook}}'>
+  <view class='Containerbook'>
+    <view class='Layout'>
+      <image class='bookImage' src='{{baseurl}}{{item.bookcoverimg}}'></image>
+    </view>
+    <view class='bookCon'>
+      <text class='bookname'>{{item.name}}</text>
+      <text class='bookdirector'>{{item.description}}</text>
+    </view>
+  </view>
+</block>

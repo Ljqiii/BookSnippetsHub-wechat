@@ -8,36 +8,56 @@ Page({
    * 页面的初始数据
    */
   data: {
-    baseurl: ""
+    Arraylist:[1],
+    baseurl: "",
+    allbook: [],
+    alllikebook:[]
 
   },
 
   getallbook: function() {
-      var that = this
-      if (wx.getStorageSync("hasuserinfo") == true) {
-        wx.request({
-          url: app.globalData.baseurl + "/me",
-          method: "GET",
-          success: function(res) {
-            that.setData({
-              followerscount: res.data["followerscount"],
-              follow: res.data["followcount"],
-              feed: res.data["feed"]
-            })
-          },
-          header: {
-            Authorization: wx.getStorageSync("token")
-          }
+    var that = this
+    wx.request({
+      url: app.globalData.baseurl + "/getallbook",
+      method: "GET",
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          allbook: res.data
+
         })
+      },
+      header: {
+        Authorization: wx.getStorageSync("token")
       }
+    })
 
+  },
+
+  getalllikebook: function() {
+    var that = this
+    if (wx.getStorageSync("hasuserinfo") == true) {
+      wx.request({
+        url: app.globalData.baseurl + "/getalllikebook",
+        method: "GET",
+        success: function(res) {
+          console.log(res)
+          that.setData({
+            alllikebook: res.data
+          })
+        },
+        header: {
+          Authorization: wx.getStorageSync("token")
+        }
+      })
     }
-
-    ,
+  },
   onLoad: function(options) {
     this.setData({
       baseurl: app.globalData.baseurl
     })
+    this.getallbook()
+    this.getalllikebook()
 
   },
 
