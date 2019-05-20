@@ -1,1 +1,35 @@
 /* pages/me/me.wxss */
+
+.text-grey {
+  color: #aaa;
+  size: 10rpx;
+}
+
+.text-black {
+  color: black;
+  size: 5rpx;
+}
+
+.line-y-left {
+  height: 5rpx;
+  width: 1rpx;
+  border-left-width: 1rpx;
+  border-left: red;
+}
+
+.line-y-right {
+  border-left: red;
+}
+
+/* 16:7比例 */
+.div167{
+  height: 380rpx;
+  width: 750rpx
+}
+
+.avatar{
+  margin-top: 30rpx;
+  height: 150rpx;
+  width: 150rpx;
+  border-radius:150rpx
+}

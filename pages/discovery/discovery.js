@@ -2,10 +2,9 @@ const app = getApp()
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    
+
     Arrarlist: [1, 2, 3, 4, 1, 1, 1, 1]
   },
 

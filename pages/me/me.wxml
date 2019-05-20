@@ -1,13 +1,53 @@
-<!--pages/me/me.wxml-->
+<image src='/img/me_background.jpg' class='div167' style='z-index:-100;position: fixed;left: 0rpx;top:0px'></image>
 
 <view wx:if="{{hasUserInfo}}">
-  <image src="{{userInfo.avatarUrl}}" mode="cover"></image>
-  <text>{{userInfo.nickName}}</text>
+  <view class='div167' style='text-align:center;margin-bottom:20rpx'>
+    <view>
+      <image src="{{userInfo.avatarUrl}}" mode="cover" class='avatar'></image>
+    </view>
+
+    <view style='margin-top:20rpx'>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+
+  </view>
+
+
+  <van-row>
+    <van-col span="7" style="text-align:center">
+      <view class="text-grey">分享</view>
+      <view class="text-black">{{feed}}</view>
+    </van-col>
+    <van-col span="1" class="line-y-left">
+      |
+    </van-col>
+    <van-col span="8" style="text-align:center">
+      <view class="text-grey">关注</view>
+      <view class="text-black">{{follow}}</view>
+    </van-col>
+    <van-col span="1">
+      |
+    </van-col>
+    <van-col span="7" style="text-align:center">
+      <view class="text-grey">粉丝</view>
+      <view class="text-black">{{followerscount}}</view>
+    </van-col>
+  </van-row>
+
+  <van-cell icon="star" title="我的收藏" is-link url="/pages/dashboard/index" link-type="navigateTo" />
+
+</view>
+<view wx:else style='text-align:center;margin-bottom:20rpx' class="div167">
+  <view style='height:100rpx'></view>
+
+  <van-button open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="default"> 登录</van-button>
+
+  <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button> -->
 </view>
 
-<view wx:else>
-<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
-</view>
+
+<van-cell icon="info" title="关于软件" is-link url="/pages/about/about" link-type="navigateTo" />
+
 
 <!-- 
 <view class="container">

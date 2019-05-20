@@ -1,0 +1,15 @@
+<view style='text-align:center;margin-top:70rpx'>
+  <image src='/img/1.png' class='img-300'>
+  </image>
+</view>
+<view style='text-align:center;margin-top:70rpx'>
+  <text style='color:#000000'>读书分享</text>
+
+</view>
+
+<view style='text-align:center;margin-top:30rpx'>
+  <text style='color:#aaaaaa'>Team：捕猎人</text>
+</view>
+<view style='text-align:center;margin-top:30rpx'>
+  <text style='color:#aaaaaa'>梁嘉琦 孙浩然 张维超 庞荣成</text>
+</view>

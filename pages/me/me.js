@@ -8,11 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baseurl: "",
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
+    followerscount: 0,
+    follow: 0,
+    feed: 0
   },
 
   /**
@@ -20,14 +24,35 @@ Page({
    */
   onLoad: function(options) {
 
+    this.setData({
+      baseurl: app.globalData.baseurl
+    })
 
-
+    var that=this
+    if (wx.getStorageSync("hasuserinfo") == true) {
+      wx.request({
+        url: app.globalData.baseurl + "/me",
+        method: "GET",
+        success: function(res) {
+          that.setData({
+            followerscount: res.data["followerscount"],
+            follow: res.data["followcount"],
+            feed: res.data["feed"] 
+          })
+        },
+        header: {
+          Authorization: wx.getStorageSync("token")
+        }
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+
+
 
   },
 

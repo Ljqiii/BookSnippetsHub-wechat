@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#1D82FE",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "消息",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  
+  "usingComponents": {
+    "van-popup": "/vant/popup/index",
+    "van-button": "/vant/button/index"
+  }
+}

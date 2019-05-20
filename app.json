@@ -2,12 +2,13 @@
   "pages": [
     "pages/discovery/discovery",
     "pages/collection/collection",
-    "pages/message/message",
+    "pages/notification/notification",
     "pages/me/me",
     "pages/index/index",
     "pages/logs/logs",
     "pages/error/error",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,7 +37,7 @@
         "selectedIconPath": "/img/addfill.png"
       },
       {
-        "pagePath": "pages/message/message",
+        "pagePath": "pages/notification/notification",
         "text": "消息",
         "iconPath": "/img/msg.png",
         "selectedIconPath": "/img/msgfill.png"

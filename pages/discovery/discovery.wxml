@@ -1,22 +1,8 @@
-<!--pages/del_collction/del_collection.wxml-->
-<view>
-
-  <swiper indicator-dots="true" indicator-color="green" indicator-active-color="red" autoplay="true" interval="3000">
-    <swiper-item>
-      <image catchtap='handleImage' src='/img/1.png'></image>
-    </swiper-item>
-    <swiper-item>
-      <image catchtap='handleImage2' src='/img/1.png'></image>
-    </swiper-item>
-    <swiper-item>
-      <image catchtap='handleImage3' src='/img/1.png'></image>
-    </swiper-item>
-    <swiper-item>
-      <image catchtap='handleImage4' src='/img/1.png'></image>
-    </swiper-item>
-  </swiper>
-</view>
-
-<text class='text'>小编精选</text>
-
-
+<van-tabs active="0" bind:change="onChange" animated>
+  <van-tab title="推荐">
+    <include src="recommend.wxml" />
+  </van-tab>
+  <van-tab title="关注">
+    <include src="myfollow.wxml" />
+  </van-tab>
+</van-tabs>

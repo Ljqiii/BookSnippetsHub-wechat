@@ -1,0 +1,27 @@
+<view bindtap='handle_message' class='Container_all'>
+
+  <view wx:for="{{notifications}}" class='imgae_handle' catchtap='showpopup'>
+
+    <image wx:if="{{item.fromnickname =='系统消息'}}" class='image_css' src="{{baseurl}}{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{item.notificationid}}'></image>
+    <image wx:else class='image_css' src="{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{index}}'></image>
+
+    <view class='text_css' data-notiid='{{index}}'>
+      <text class='name_fa' data-notiid='{{index}}'>{{item.fromnickname}}</text>
+      <text class='say_what' data-notiid='{{index}}'>{{item.msg}}</text>
+    </view>
+  </view>
+</view>
+
+<van-popup show="{{popupshow}}" bind:close="onPopupClose">
+
+  <view class='popupview' style='text-align:center'>
+    <view>
+      <text style='margin-bottom:40rpx;font-size: 20px'>{{notifications[popupnotificationindex].fromnickname}}</text>
+    </view>
+
+    <view>
+      <text>{{notifications[popupnotificationindex].msg}}</text>
+    </view>
+    <van-button type="default">删除</van-button>
+  </view>
+</van-popup>

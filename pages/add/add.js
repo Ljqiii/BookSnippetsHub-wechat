@@ -131,13 +131,8 @@ Page({
           Authorization: wx.getStorageSync("token")
         },
         success: function(e) {
-          console.log(e)
+      
           if (e.data["errcode"] == 0) {
-            that.setData({
-              bookname: "",
-              bookcontent: "",
-              bookcomment: ""
-            })
             wx.showToast({
               title: '发布成功',
               icon: 'success',

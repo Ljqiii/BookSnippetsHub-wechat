@@ -1,0 +1,46 @@
+/* pages/message/message.wxss */
+
+.Container_all {
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.imgae_handle {
+  margin: 10rpx;
+  display: flex;
+}
+
+.image_css {
+  width: 160rpx;
+  height: 160rpx;
+  vertical-align: middle;
+}
+
+.text_css {
+  width: 600rpx;
+  margin-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0rpx;
+}
+
+.name_fa {
+  font-size: 40rpx;
+  color: black;
+  margin-top: 5rpx;
+}
+
+.say_what {
+  font-size: 40rpx;
+  padding-bottom: 38rpx;
+  border-bottom: 1px solid #f1f1f1;
+   color: #aaaaaa;
+}
+
+.popupview {
+  height: 300rpx;
+  width: 500rpx;
+}
