@@ -8,11 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    Arraylist:[1],
+    
+    Arraylist: [1],
     baseurl: "",
     allbook: [],
-    alllikebook:[]
+    alllikebook: []
 
+  },
+  navigateToBookPage: function(e) {
+    wx.navigateTo({
+      url: '/pages/bookfeed/bookfeed?bookid=' + e.target.dataset.bookid
+    })
+    console.log(e)
   },
 
   getallbook: function() {

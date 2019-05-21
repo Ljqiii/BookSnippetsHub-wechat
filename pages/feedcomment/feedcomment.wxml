@@ -1,0 +1,23 @@
+<view wx:if="{{feed}}">
+  <view wx:for="{{feed}}" data-id='{{item.id}}' data-index='{{index}}'>
+    <include src="/pages/item.wxml" />
+  </view>
+</view>
+
+<view wx:for="{{comments}}">
+
+  <image class='image_css' src="{{item.AvatarUrl}}" mode="aspectFit" data-notiid='{{index}}'></image>
+  <view class='text_css' data-notiid='{{index}}'>
+    <text class='name_fa' data-notiid='{{index}}'>{{item.nickname}}</text>
+    <text class='say_what' data-notiid='{{index}}'>{{item.comment}}</text>
+  </view>
+
+</view>
+
+
+
+<van-cell-group class="atbottom" style="width:750rpx">
+  <van-field value="{{ commentvalue }}" center clearable placeholder="评论一下" border="{{ true }}" use-button-slot bind:change="oncommentinputchange">
+    <van-button slot="button" size="small" type="primary" open-type="getUserInfo" bindgetuserinfo='addcommentbtn'>评论</van-button>
+  </van-field>
+</van-cell-group>

@@ -5,11 +5,45 @@ Page({
   data: {
     baseurl: "",
     alllikebook: [],
-    allrecommendfeedsid: [1, 23],
+    allrecommendfeedsid: [],
     recommendfeeds: []
   },
   navigateToBookPage: function(e) {
+    wx.navigateTo({
+      url: '/pages/bookfeed/bookfeed?bookid='+e.target.dataset.bookid
+    })
     console.log(e)
+  },
+
+  navigateTofeedcomment:function(e){
+    wx.navigateTo({
+      url: '/pages/feedcomment/feedcomment?feedid=' + e.target.dataset.feedid,
+    })
+    console.log(e)
+  },
+
+
+  likethisfeed:function(e){
+    console.log(e)
+    var index=e.target.dataset.index
+    var id = e.target.dataset.id
+
+
+
+
+  },
+
+  forwardthisfeed:function(e){
+    console.log(e)
+    var index = e.target.dataset.index
+    var id = e.target.dataset.id
+
+    this.setData({
+
+
+    })
+
+
   },
 
   getrecommendfeed: function() {

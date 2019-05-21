@@ -1,0 +1,33 @@
+/* pages/feedcomment/feedcomment.wxss */
+.optionsbar{
+  display: none
+}
+.atbottom{
+  position: fixed;
+  left: 0rpx;
+  bottom:0px
+}
+.image_css {
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+}
+.text_css {
+  width: 600rpx;
+  margin-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0rpx;
+}
+.name_fa {
+  font-size: 40rpx;
+  color: black;
+  margin-top: 5rpx;
+}
+
+.say_what {
+  font-size: 40rpx;
+  padding-bottom: 38rpx;
+  border-bottom: 1px solid #f1f1f1;
+   color: #aaaaaa;
+}

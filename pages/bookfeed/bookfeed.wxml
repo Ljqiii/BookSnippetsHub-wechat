@@ -1,0 +1,44 @@
+<view style='width:750rpx'>
+
+
+
+  <view class='Containerbook' style='align-items: center;'>
+    <view class='Layout'>
+      <image class='bookImage' src='{{baseurl}}{{bookcoverimgurl}}' mode="aspectFit"></image>
+    </view>
+    <view class='bookCon'>
+      <text class='bookname' style='vertical-align:middle'>{{name}}</text>
+    </view>
+    <view class='star'>
+      <image wx:if="{{isstar}}" src='/img/starfill.png' style='height:60rpx;width:60rpx' mode="aspectFill" catchtap='dislikebook'></image>
+      <image wx:if="{{!isstar}}" src='/img/star.png' style='height:60rpx;width:60rpx' mode="aspectFill" catchtap='likebook'></image>
+    </view>
+  </view>
+
+  <view style='font-weight:bold;font-size:60rpx'>简介</view>
+  <view style='border:10rpx;text-indent:60rpx;text-align: left;width:750rpx;border-bottom: 1rpx solid #eee;margin-bottom:30rpx'>
+    <view>
+      <text>{{description}}</text>
+    </view>
+  </view>
+</view>
+
+
+<view wx:if="{{allfeed}}">
+  <view wx:for="{{allfeed}}" data-id='{{item.id}}' data-index='{{index}}'>
+    <include src="/pages/item.wxml" />
+  </view>
+</view>
+
+<view wx:else style='text-align:center'>
+  <view style='margin-top:350rpx'>
+    <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
+  </view>
+  <text>这本书还没有人分享</text>
+</view>
+
+<view wx:if="{{isloading}}" style='text-align:center'>
+  <text>加载中</text>
+</view>
+
+<view style='height:200rpx'></view>

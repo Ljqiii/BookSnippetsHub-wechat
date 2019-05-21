@@ -1,11 +1,16 @@
 <block wx:for='{{alllikebook}}'>
-  <view class='Containerbook'>
-    <view class='Layout'>
-      <image class='bookImage' src='{{baseurl}}{{item.bookcoverimg}}'></image>
+  <view class='Containerbook' data-bookid='{{item.id}}' catchtap='navigateToBookPage'>
+    <view class='Layout' data-bookid='{{item.id}}'>
+      <image class='bookImage' src='{{baseurl}}{{item.bookcoverimg}}' data-bookid='{{item.id}}'></image>
     </view>
-    <view class='bookCon'>
-      <text class='bookname'>{{item.name}}</text>
-      <text class='bookdirector'>{{item.description}}</text>
+    <view class='bookCon' data-bookid='{{item.id}}'>
+      <text class='bookname' data-bookid='{{item.id}}'>{{item.name}}</text>
+      <text class='bookdirector' data-bookid='{{item.id}}'>{{item.description}}</text>
     </view>
   </view>
 </block>
+
+<view wx:if="{{!alllikebook}}">
+
+
+</view>

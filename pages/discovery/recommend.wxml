@@ -1,27 +1,10 @@
 <view wx:if="{{recommendfeeds}}">
-
   <view wx:for="{{recommendfeeds}}" data-id='{{item.id}}' data-index='{{index}}'>
-    <image src='{{baseurl}}{{item.backgroundmageurl}}' style='height:70rpx;width:70rpx' mode="aspectFill"> </image>
-    <text>{{item.nickname}}</text>
-    <image src='{{item.avatarUrl}}' style='height:200rpx;width:200rpx'></image>
-
-    <view>
-    『
-      <text data-bookid='{{item.bookid}}' catchtap='navigateToBookPage'class="underline">{{item.bookname}}</text>
-      』
-    </view>
-    <view>
-      <text>{{item.bookcomment}}</text>
-    </view>
-    <view>
-      <text>{{item.bookcontent}}</text>
-    </view>
-    <view style='background-color:black;height:2px'></view>
+    <include src="/pages/item.wxml" />
   </view>
-
 </view>
-<view wx:else style='text-align:center'>
 
+<view wx:else style='text-align:center'>
   <view style='margin-top:350rpx'>
     <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
   </view>

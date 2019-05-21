@@ -1,0 +1,45 @@
+<van-row>
+  <van-col span="2"></van-col>
+  <van-col span="5">
+    <image src='{{item.avatarUrl}}' style='height:100rpx;width:100rpx'></image>
+  </van-col>
+  <van-col span="1"></van-col>
+  <van-col span="16">
+    <text>{{item.nickname}},{{item.time}}</text>
+  </van-col>
+</van-row>
+
+
+<image src='{{baseurl}}{{item.backgroundmageurl}}' style='height:70rpx;width:70rpx' mode="aspectFill"> </image>
+
+
+<view>
+  『
+  <text data-bookid='{{item.bookid}}' catchtap='navigateToBookPage' style='text-decoration: underline'>{{item.bookname}}</text> 』
+</view>
+<view>
+  <text>{{item.bookcomment}}</text>
+</view>
+<view>
+  <text>{{item.bookcontent}}</text>
+</view>
+
+<van-row style="text-align:center;background-color:#E2E9EE;height:50rpx" class="optionsbar">
+  <van-col span="8" catchtap="likethisfeed" data-id="{{item.id}}" data-index="{{index}}">
+    <image wx:if="{{item.isliked==false}}" src='/img/like.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
+    <image wx:else src='/img/likefill.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
+    <text wx:if="{{item.likecount>0}}" data-id="{{item.id}}" data-index="{{index}}" style="vertical-align:middle">{{item.likecount}}</text>
+  </van-col>
+
+  <van-col span="8" style="vertical-align:middle" catchtap="navigateTofeedcomment" data-feedid='{{item.id}}'>
+    <image src='/img/comment.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-feedid='{{item.id}}'></image>
+    <text wx:if="{{item.commentcount>0}}" style="vertical-align:middle" data-feedid='{{item.id}}'>{{item.commentcount}}</text>
+  </van-col>
+
+  <van-col span="8" catchtap="forwardthisfeed" data-id="{{item.id}}" data-index="{{index}}">
+    <image wx:if="{{item.isforward!=true}}" src='/img/forward.png' mode="aspectFit" style='height:50rpx;width:50rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
+    <image wx:else src='/img/forwardfill.png' mode="aspectFit" style='height:50rpx;width:50rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
+  </van-col>
+</van-row>
+
+<view style='background-color:#E2E9EE;height:1px'></view>

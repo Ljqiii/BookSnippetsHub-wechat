@@ -9,7 +9,9 @@
     "pages/error/error",
     "pages/add/add",
     "pages/about/about",
-    "pages/book/book"
+    "pages/book/book",
+    "pages/bookfeed/bookfeed",
+    "pages/feedcomment/feedcomment"
   ],
   "window": {
     "backgroundTextStyle": "light",
