@@ -14,8 +14,8 @@
 }
 
 .image_css {
-  width: 160rpx;
-  height: 160rpx;
+  width: 85rpx;
+  height: 85rpx;
   vertical-align: middle;
 }
 
@@ -28,13 +28,13 @@
 }
 
 .name_fa {
-  font-size: 40rpx;
+  font-size: 25rpx;
   color: black;
   margin-top: 5rpx;
 }
 
 .say_what {
-  font-size: 40rpx;
+  font-size: 23rpx;
   padding-bottom: 38rpx;
   border-bottom: 1px solid #f1f1f1;
    color: #aaaaaa;

@@ -1,14 +1,44 @@
-<image mode="aspectFill" style='z-index:-100;position: fixed;left: 0rpx;top:0px;width:750rpx' src='{{bgimgurl}}'>
-</image>
+<!-- <image mode="aspectFill" style='z-index:-100;position: fixed;left: 0rpx;top:0px;width:750rpx' src='{{bgimgurl}}'>
+</image> -->
 
-<text>书名</text>
-<input confirm-type="next" bindinput='inputbookname'></input>
+<view style="background: url('{{bgimgurl}}'); min-height:700rpx">
 
-<text>书内容</text>
-<input confirm-type="next" bindinput='inputbookcontent'></input>
 
-<text>书评论</text>
-<input confirm-type="done" bindinput='inputbookcomment'></input>
+  <view style='text-align:center;padding-top:20rpx'>
+
+    <van-row>
+      <van-col span="8" style='text-align:right'>
+        <text style="font-size:50rpx;padding-right:20rpx">『</text>
+      </van-col>
+      <van-col span="8">
+        <input style="text-align:center;margin-top:20rpx" placeholder="书名" confirm-type="next" bindinput='inputbookname'></input>
+      </van-col>
+      <van-col span="8" style='text-align:left'>
+        <text style="font-size:50rpx;padding-left:20rpx">』</text>
+      </van-col>
+    </van-row>
+    <view style='height:1px;background-color:#e8e8e8;'></view>
+
+
+
+    <view style='text-align:left'>
+      <text style="font-size:60rpx;">"</text>
+    </view>
+    <view style='text-align:center'>
+      <textarea style='width:750rpx' rows="6" auto-height="true" placeholder="书内容" confirm-type="next" bindinput='inputbookcontent'></textarea>
+    </view>
+    <view style="text-align:right">
+      <text style="font-size:60rpx;text-align:right">"</text>
+    </view>
+    <view style='height:1px;background-color:#e8e8e8;'></view>
+    <view style='text-align:center'>
+      <textarea style='width:750rpx' rows="6" auto-height="true"  placeholder="写一点想法吧" confirm-type="done" bindinput='inputbookcomment'></textarea>
+    </view>
+  </view>
+
+
+</view>
+
 
 
 

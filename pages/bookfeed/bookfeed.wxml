@@ -1,11 +1,14 @@
 <view style='width:750rpx'>
 
-
-
   <view class='Containerbook' style='align-items: center;'>
-    <view class='Layout'>
+    <view wx:if="{{item.bookcoverimgurl!='/bookcover/null'}}" class='Layout'>      
       <image class='bookImage' src='{{baseurl}}{{bookcoverimgurl}}' mode="aspectFit"></image>
     </view>
+    <view wx:else class='Layout'>      
+      <image class='bookImage' src='/img/bookdefault.png' mode="aspectFit"></image>
+    </view>
+
+
     <view class='bookCon'>
       <text class='bookname' style='vertical-align:middle'>{{name}}</text>
     </view>
@@ -15,7 +18,7 @@
     </view>
   </view>
 
-  <view style='font-weight:bold;font-size:60rpx'>简介</view>
+  <view style='font-weight:bold;font-size:40rpx'>简介</view>
   <view style='border:10rpx;text-indent:60rpx;text-align: left;width:750rpx;border-bottom: 1rpx solid #eee;margin-bottom:30rpx'>
     <view>
       <text>{{description}}</text>
@@ -32,7 +35,7 @@
 
 <view wx:else style='text-align:center'>
   <view style='margin-top:350rpx'>
-    <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
+    <image src='/img/none.png' style='width:120rpx;height:120rpx'></image>
   </view>
   <text>这本书还没有人分享</text>
 </view>

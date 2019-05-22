@@ -33,4 +33,6 @@
   left: 0rpx;
   bottom: 100rpx;
 }
-
+.placeholderblack{
+  color:black;
+}

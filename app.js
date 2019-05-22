@@ -6,7 +6,8 @@ App({
   globalData: {
     hasuserinfo: "",
     userInfo: null,
-    baseurl: "http://api.booksnippetshub.com:8080" //change this
+    baseurl: "https://api.booksnippetshub.com" //change this
+    // baseurl: "http://127.0.0.1:8081" //change this
   },
   onLaunch: function() {
     wx.setStorageSync("hasuserinfo", false)

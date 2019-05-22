@@ -116,7 +116,7 @@ Page({
     })
   },
   send: function() {
-    var that=this
+    var that = this
     if (wx.getStorageSync("hasuserinfo") == true) {
       wx.request({
         url: this.data.baseurl + '/addfeed',
@@ -131,12 +131,18 @@ Page({
           Authorization: wx.getStorageSync("token")
         },
         success: function(e) {
-      
           if (e.data["errcode"] == 0) {
             wx.showToast({
               title: '发布成功',
               icon: 'success',
-              duration: 2000
+              duration: 2000,
+              success: function() {
+                setTimeout(function() {
+                  wx.switchTab({
+                    url: '/pages/discovery/discovery'
+                  })
+                }, 2000)
+              }
             })
           } else {
             wx.showToast({

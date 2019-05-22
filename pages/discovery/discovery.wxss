@@ -8,7 +8,7 @@
 page{
   width: 750rpx;
   height: auto;
-  color: #fff;
+ 
 }
 
 /*标题  */
@@ -24,24 +24,25 @@ page{
 
 /*文本描述  */
 .conts{
-  font-size: 28rpx;
-  line-height:50rpx;
-  background-color: grey;
+
+  background: url('http://127.0.0.1:8080/bgimg/11.png');
   
   /*关键属性（必须有的）  */
   display: -webkit-box; 
   /*规定子元素的排列方向 */
   -webkit-box-orient: vertical; 
    /*限制文本显示的行数  */
-  -webkit-line-clamp: 4;
+  /* -webkit-line-clamp: 10; */
+  max-height: 600rpx;
   /*实现多余的文字隐藏并用省略号来代表被隐藏的文字  */
-  overflow: visible;
+  overflow: hidden;
   text-overflow:ellipsis;
 }
 .conts1{
-  font-size: 28rpx;
-  line-height:50rpx;
-  background-color: grey;
+
+
+ background: url('http://127.0.0.1:8080/bgimg/11.png');
+ 
   
   /*关键属性（必须有的）  */
   display: -webkit-box; 

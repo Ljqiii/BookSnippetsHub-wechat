@@ -4,9 +4,9 @@
     <view wx:for="{{recommendfeeds}}" data-id='{{item.id}}' data-index='{{index}}'>
       <include src="/pages/item.wxml" />
     </view>
-     <view style='text-align:center;margin-bottom:100rpx;margin-top:20rpx;color:#e2e9ee'>
+     <!-- <view style='text-align:center;margin-bottom:100rpx;margin-top:20rpx;color:#e2e9ee'>
         <text>- 没有更多内容 -</text>
-      </view>
+      </view> -->
   </view>
 
   <view wx:else style='text-align:center'>

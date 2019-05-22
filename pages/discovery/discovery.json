@@ -4,6 +4,7 @@
   "navigationBarTitleText": "发现",
 
   "usingComponents":{
+    "van-loading": "/vant/loading/index",
     "van-row": "/vant/row/index",
     "van-col": "/vant/col/index",
     "van-tab": "/vant/tab/index",
