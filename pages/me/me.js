@@ -28,7 +28,7 @@ Page({
       baseurl: app.globalData.baseurl
     })
 
-    var that=this
+    var that = this
     if (wx.getStorageSync("hasuserinfo") == true) {
       wx.request({
         url: app.globalData.baseurl + "/me",
@@ -37,7 +37,7 @@ Page({
           that.setData({
             followerscount: res.data["followerscount"],
             follow: res.data["followcount"],
-            feed: res.data["feed"] 
+            feed: res.data["feed"]
           })
         },
         header: {
@@ -120,10 +120,17 @@ Page({
 
   },
 
+  touserfeed: function() {
+    var userid=wx.getStorageSync("userid")
+    wx.navigateTo({
+      url: '/pages/userfeed/userfeed&userid=' + userid,
+    })
+  },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    
+
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true

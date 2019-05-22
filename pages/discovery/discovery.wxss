@@ -1,3 +1,62 @@
 .underline{
   text-decoration: underline;
 }
+
+
+
+
+page{
+  width: 750rpx;
+  height: auto;
+  color: #fff;
+}
+
+/*标题  */
+.title{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 42rpx;
+  font-weight: bold;
+  color: black;
+  background-color: burlywood;
+  text-align: center;
+}
+
+/*文本描述  */
+.conts{
+  font-size: 28rpx;
+  line-height:50rpx;
+  background-color: grey;
+  
+  /*关键属性（必须有的）  */
+  display: -webkit-box; 
+  /*规定子元素的排列方向 */
+  -webkit-box-orient: vertical; 
+   /*限制文本显示的行数  */
+  -webkit-line-clamp: 4;
+  /*实现多余的文字隐藏并用省略号来代表被隐藏的文字  */
+  overflow: visible;
+  text-overflow:ellipsis;
+}
+.conts1{
+  font-size: 28rpx;
+  line-height:50rpx;
+  background-color: grey;
+  
+  /*关键属性（必须有的）  */
+  display: -webkit-box; 
+  /*规定子元素的排列方向 */
+  -webkit-box-orient: vertical; 
+   /*限制文本显示的行数  */
+}
+
+/*切换  */  
+ .state{
+  color: cyan;
+  float: right;
+  font-size: 30rpx;
+  margin: 30rpx;
+}
+
+
+

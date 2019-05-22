@@ -4,21 +4,50 @@ const app = getApp()
 Page({
 
   data: {
+    loginbtn: true,
     baseurl: "",
     notifications: [],
     popupshow: false,
     popupnotificationindex: -1,
 
   },
+
+  getUserInfo: function(e) {
+    app.globalData.userInfo = e.detail.userInfo
+
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+    var that = this
+
+    wx.request({
+      url: app.globalData.baseurl + "/auth/uploadWxUserinfo",
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      data: {
+        userinfo: e.detail.userInfo
+      },
+      success: res => {
+        that.setData({
+          loginbtn: false
+        })
+        wx.setStorageSync("hasuserinfo", true)
+      }
+    })
+  },
+
   onReachBottom: function() {
     console.log("safds")
   },
 
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading()
-    setTimeout(function(){
+    setTimeout(function() {
       console.log("logonPullDownRefresh")
-    },1000)
+    }, 1000)
     this.getnotification()
   },
 
@@ -43,6 +72,16 @@ Page({
   },
 
   onLoad: function(options) {
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          that.setData({
+            loginbtn: false
+          })
+        }
+      }
+    })
 
     this.setData({
       baseurl: app.globalData.baseurl

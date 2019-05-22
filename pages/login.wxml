@@ -1,0 +1,5 @@
+<view style='text-align:center'>
+  <view style='margin-top:350rpx;width:100rpx'></view>
+  
+  <vant-button type="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" >登录</vant-button>
+</view>

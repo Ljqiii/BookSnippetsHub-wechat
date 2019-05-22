@@ -10,7 +10,10 @@
   </view>
 </block>
 
-<view wx:if="{{!alllikebook}}">
-
+<view wx:if="{{alllikebook.length==0}}" style='text-align:center'>
+  <view style='margin-top:350rpx'>
+    <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
+  </view>
+  <text>您没有收藏</text>
 
 </view>

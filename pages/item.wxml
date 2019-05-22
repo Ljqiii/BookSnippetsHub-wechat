@@ -7,8 +7,20 @@
   <van-col span="16">
     <text>{{item.nickname}},{{item.time}}</text>
   </van-col>
+  <!-- <van-col span="4">
+
+    <vant-button type="default" wx:if="{{item.userid==userid && displayfollowbtn && !item.isfollow}}" catchtap='follow' data-userid='{{item.userid}}'>关注</vant-button>
+    <vant-button disabled type="default" wx:if="{{item.isfollow && displayfollowbtn}}" catchtap='disfollow' data-userid='{{item.userid}}'>已关注</vant-button>
+   
+  </van-col> -->
+
+
 </van-row>
 
+
+
+
+<!-- feed content -->
 
 <image src='{{baseurl}}{{item.backgroundmageurl}}' style='height:70rpx;width:70rpx' mode="aspectFill"> </image>
 
@@ -25,10 +37,11 @@
 </view>
 
 <van-row style="text-align:center;background-color:#E2E9EE;height:50rpx" class="optionsbar">
-  <van-col span="8" catchtap="likethisfeed" data-id="{{item.id}}" data-index="{{index}}">
-    <image wx:if="{{item.isliked==false}}" src='/img/like.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
-    <image wx:else src='/img/likefill.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
-    <text wx:if="{{item.likecount>0}}" data-id="{{item.id}}" data-index="{{index}}" style="vertical-align:middle">{{item.likecount}}</text>
+
+  <van-col span="8" catchtap="likeordislikethisfeedbtn" data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}">
+    <image wx:if="{{item.isliked==false}}" src='/img/like.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}"></image>
+    <image wx:else src='/img/likefill.png' mode="aspectFit" style='vertical-align:middle;height:50rpx;width:50rpx;padding-right:15rpx' data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}"></image>
+    <text wx:if="{{item.likecount>0}}" data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}" style="vertical-align:middle">{{item.likecount}}</text>
   </van-col>
 
   <van-col span="8" style="vertical-align:middle" catchtap="navigateTofeedcomment" data-feedid='{{item.id}}'>
@@ -40,6 +53,8 @@
     <image wx:if="{{item.isforward!=true}}" src='/img/forward.png' mode="aspectFit" style='height:50rpx;width:50rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
     <image wx:else src='/img/forwardfill.png' mode="aspectFit" style='height:50rpx;width:50rpx' data-id="{{item.id}}" data-index="{{index}}"></image>
   </van-col>
+
+
 </van-row>
 
 <view style='background-color:#E2E9EE;height:1px'></view>

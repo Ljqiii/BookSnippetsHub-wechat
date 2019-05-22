@@ -34,7 +34,7 @@
     </van-col>
   </van-row>
 
-  <van-cell icon="star" title="我的收藏" is-link url="/pages/dashboard/index" link-type="navigateTo" />
+  <van-cell icon="star" title="我的收藏" is-link  url="/pages/userfeed/userfeed"  link-type="navigateTo" />
 
 </view>
 <view wx:else style='text-align:center;margin-bottom:20rpx' class="div167">

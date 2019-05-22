@@ -1,18 +1,20 @@
 <van-tabs active="0" bind:change="onChange" animated>
   <van-tab title="关注">
-    <include src="alllikebook.wxml" />
+    <view wx:if="{{!loginbtn}}">
+      <include src="alllikebook.wxml" />
+    </view>
+    <view wx:else>
+      <include src="/pages/login.wxml" />
+    </view>
+
   </van-tab>
 
   <van-tab title="所有">
-    <include src="allbook.wxml" />
+    <view wx:if="{{!loginbtn}}">
+      <include src="allbook.wxml" />
+    </view>
+    <view wx:else>
+      <include src="/pages/login.wxml" />
+    </view>
   </van-tab>
 </van-tabs>
-
-
-
-
-
-
-
-
-

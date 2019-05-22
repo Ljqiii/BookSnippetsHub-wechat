@@ -1,7 +1,30 @@
+
+ <view class="title">华山</view>
+
+      <!-- <view class="conts {{isFolded?'hide':'show'}}"> -->
+      <view class="{{isFolded?'conts':'conts1'}}">
+          <text>一、华山（Mount Hua），古称“西岳”，雅称“太华山”，为中国著名的五岳之一，中华文明的发祥地，“中华”和“华夏”之“华”，就源于华山 。位于陕西省渭南市华阴市，在省会西安以东120千米处。南接秦岭，北瞰黄渭，自古以来就有“奇险天下第一山”的说法。华山是第一批国家重点风景名胜区，国家AAAAA级旅游景区，全国重点文物保护单位\n</text>
+          <text>二、华山是中华民族的圣山。中华之“华”，源于华山，由此，华山有了“华夏之根”之称。这一成果首先被孙中山所引用，创立“中华民国”。据清代国学大师章太炎和历代专家学者考证：华夏民族最初形成并居住于“华山之周”，名其国土曰华，其后人迹所至，遍及九州，华之名始广。</text>
+      </view>
+      
+      <!--切换 -->
+      <view bindtap="change" class="state">{{isFolded?'展开':'收起'}}</view> 
+
+
+
+
+
+
+
+
+
 <view wx:if="{{recommendfeeds}}">
   <view wx:for="{{recommendfeeds}}" data-id='{{item.id}}' data-index='{{index}}'>
     <include src="/pages/item.wxml" />
   </view>
+    <view style='text-align:center;margin-bottom:100rpx;margin-top:20rpx;color:#e2e9ee'>
+      <text>- 没有更多内容 -</text>
+    </view>
 </view>
 
 <view wx:else style='text-align:center'>

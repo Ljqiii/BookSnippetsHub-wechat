@@ -9,6 +9,7 @@ App({
     baseurl: "http://api.booksnippetshub.com:8080" //change this
   },
   onLaunch: function() {
+    wx.setStorageSync("hasuserinfo", false)
 
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -30,6 +31,7 @@ App({
             // console.log(res.data)
             if (res.data.errcode == 0) {
 
+              wx.setStorageSync("userid", res.data.userid)
               wx.setStorageSync("token", res.data.token)
               wx.setStorageSync("hasuserinfo", res.data.hasuserinfo)
               thatt.globalData.hasuserinfo = res.data.hasuserinfo
@@ -39,7 +41,7 @@ App({
                 success: res => {
                   var thattt = thatt
                   if (res.authSetting['scope.userInfo']) {
-                    // console.log("已经授权")
+                    console.log("已经授权")
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                     wx.getUserInfo({
                       success: res => {

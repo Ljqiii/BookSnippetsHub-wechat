@@ -11,7 +11,9 @@
     "pages/about/about",
     "pages/book/book",
     "pages/bookfeed/bookfeed",
-    "pages/feedcomment/feedcomment"
+    "pages/feedcomment/feedcomment",
+    "pages/login/login",
+    "pages/mylikefeed/mylikefeed"
   ],
   "window": {
     "backgroundTextStyle": "light",

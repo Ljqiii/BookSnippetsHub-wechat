@@ -20,51 +20,147 @@ Page({
     allfeed: []
   },
 
-likebook:function(){
-  var that=this
-  wx.request({
-    url: app.globalData.baseurl + '/likebook',
-    data:{
-      bookid: that.data.id
-    },
-    method: "POST",
-    header: {
-      Authorization: wx.getStorageSync("token")
-    },
-    success:function(res){
-      if(res.data["isok"]==true){
+  likebook: function() {
+    var that = this
+    wx.request({
+      url: app.globalData.baseurl + '/likebook',
+      data: {
+        bookid: that.data.id
+      },
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      success: function(res) {
+        if (res.data["isok"] == true) {
           that.setData({
             isstar: true
           })
+        }
       }
-    }
-  })
+    })
 
-},
-dislikebook:function(){
-  var that = this
-  wx.request({
-    url: app.globalData.baseurl + '/dislikebook',
-    data: {
-      bookid: that.data.id
-    },
-    method: "POST",
-    header: {
-      Authorization: wx.getStorageSync("token")
-    },
-    success: function (res) {
-      if (res.data["isok"] == true) {
-        that.setData({
-          isstar: false
-        })
+  },
+
+  dislikebook: function() {
+    var that = this
+    wx.request({
+      url: app.globalData.baseurl + '/dislikebook',
+      data: {
+        bookid: that.data.id
+      },
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      success: function(res) {
+        if (res.data["isok"] == true) {
+          that.setData({
+            isstar: false
+          })
+        }
+
       }
+    })
+  },
 
-    }
-  })
-}
 
-,
 
+  likefeed: function (id, index, from) {
+    var that = this
+    console.log("in function like feed")
+    wx.request({
+      url: app.globalData.baseurl + '/likefeed',
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      data: {
+        feedid: id
+      },
+      success: res => {      
+        var temp = that.data.allfeed
+          console.log(temp)
+          temp[index].isliked = true
+          temp[index].likecount = temp[index].likecount + 1
+
+          that.setData({
+            allfeed: temp
+          })
+
+        console.log(res)
+      }
+    })
+  },
+
+  dislikefeed: function (id, index, from) {
+    var that = this
+    console.log("in function dislike feed")
+    wx.request({
+      url: app.globalData.baseurl + '/dislikefeed',
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      data: {
+        feedid: id
+      },
+      success: res => {
+
+   
+        var temp = that.data.allfeed
+          console.log(temp)
+
+          temp[index].isliked = false
+          temp[index].likecount = temp[index].likecount - 1
+
+          that.setData({
+            allfeed: temp
+          })
+     
+        console.log(res)
+      }
+    })
+  },
+
+  likeordislikethisfeedbtn: function (e) {
+    console.log(e)
+
+    var index = e.target.dataset.index
+    var id = e.target.dataset.id
+    var from = e.target.dataset.from
+
+    var feeds = this.data.allfeed
+    var status = feeds[index]["isliked"]
+
+
+    console.log(status)
+    console.log(index)
+    console.log(id)
+
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          if (status == false) {
+            this.likefeed(id, index, from)
+          } else {
+            this.dislikefeed(id, index, from)
+          }
+        } else {
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
+    })
+  },
+  navigateTofeedcomment: function (e) {
+    wx.navigateTo({
+      url: '/pages/feedcomment/feedcomment?feedid=' + e.target.dataset.feedid,
+    })
+    console.log(e)
+  },
 
   onLoad: function(options) {
     var that = this

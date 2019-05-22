@@ -1,0 +1,17 @@
+<view wx:if="{{from!=self}}">
+userinfo
+
+</view>
+
+<view wx:if="{{allmylikefeed}}">
+  <view wx:for="{{allmylikefeed}}" data-id='{{item.id}}' data-index='{{index}}'>
+    <include src="/pages/item.wxml" />
+  </view>
+</view>
+
+<view wx:else style='text-align:center'>
+  <view style='margin-top:350rpx'>
+    <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
+  </view>
+  <text>无内容</text>
+</view>

@@ -8,6 +8,6 @@
   
   "usingComponents": {
     "van-popup": "/vant/popup/index",
-    "van-button": "/vant/button/index"
+    "vant-button": "/vant/button/index"
   }
 }
