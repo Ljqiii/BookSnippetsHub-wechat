@@ -16,8 +16,8 @@
 
 .scroll-x-item {  
   text-align: center;
-  width: 215rpx;
-  height: 230rpx;
+  width: 110rpx;
+  height: 110rpx;
   display: inline-block;
 }
 
@@ -31,7 +31,7 @@
 .bottom {
   position: fixed;
   left: 0rpx;
-  bottom: 100rpx;
+  bottom: 50rpx;
 }
 .placeholderblack{
   color:black;

@@ -8,8 +8,8 @@
   bottom:0px
 }
 .image_css {
-  width: 100rpx;
-  height: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
   vertical-align: middle;
 }
 .text_css {

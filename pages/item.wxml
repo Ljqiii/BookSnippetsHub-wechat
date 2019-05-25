@@ -1,6 +1,6 @@
 <van-row>
-  <van-col span="2"></van-col>
-  <van-col span="5">
+  <van-col span="3"></van-col>
+  <van-col span="4">
     <image src='{{item.avatarUrl}}' style='height:80rpx;width:80rpx;padding-left:20rpx;padding-top:5rpx'></image>
   </van-col>
   <van-col span="1"></van-col>

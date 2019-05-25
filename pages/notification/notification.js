@@ -11,7 +11,9 @@ Page({
     popupnotificationindex: -1,
 
   },
-
+  deleteSystemMessage(){
+    
+  },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
 
