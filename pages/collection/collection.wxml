@@ -9,7 +9,7 @@
 
   </van-tab>
 
-  <van-tab title="所有">
+  <van-tab title="书库">
     <view wx:if="{{!loginbtn}}">
       <include src="allbook.wxml" />
     </view>

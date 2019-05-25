@@ -5,18 +5,19 @@
   border-bottom: 1rpx solid #eee;
 }
 .bookImage{
-  width:128rpx;
+  width:100rpx;
   
-  height: 128rpx;
+  height: 100rpx;
 }
 .bookCon{
+  line-height: 24px;
   display: flex;
   flex-direction: column;
   width: 66%;
   margin-left: 20rpx;
 }
 .bookname{
-   
+   vertical-align: middle;
    font-size: 32rpx;
    font-weight: bolder;
    /*文本...形式*/
@@ -29,6 +30,7 @@
    font-weight: bolder;
 }
 .bookdirector{
+  vertical-align: middle;
    font-size: 32rpx;
    font-weight: bolder;
    }

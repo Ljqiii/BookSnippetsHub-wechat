@@ -26,29 +26,16 @@ page{
 .conts{
 
   background: url('http://127.0.0.1:8080/bgimg/11.png');
-  
-  /*关键属性（必须有的）  */
   display: -webkit-box; 
-  /*规定子元素的排列方向 */
   -webkit-box-orient: vertical; 
-   /*限制文本显示的行数  */
-  /* -webkit-line-clamp: 10; */
   max-height: 600rpx;
-  /*实现多余的文字隐藏并用省略号来代表被隐藏的文字  */
   overflow: hidden;
   text-overflow:ellipsis;
 }
 .conts1{
-
-
  background: url('http://127.0.0.1:8080/bgimg/11.png');
- 
-  
-  /*关键属性（必须有的）  */
   display: -webkit-box; 
-  /*规定子元素的排列方向 */
   -webkit-box-orient: vertical; 
-   /*限制文本显示的行数  */
 }
 
 /*切换  */  

@@ -11,6 +11,7 @@
     "pages/about/about",
     "pages/book/book",
     "pages/bookfeed/bookfeed",
+    "pages/userfeed/userfeed",
     "pages/feedcomment/feedcomment",
     "pages/login/login",
     "pages/mylikefeed/mylikefeed"

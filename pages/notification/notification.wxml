@@ -6,7 +6,7 @@
       <image wx:if="{{item.fromnickname =='系统消息'}}" class='image_css' src="{{baseurl}}{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{item.notificationid}}'></image>
       <image wx:else class='image_css' src="{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{index}}'></image>
 
-      <view class='text_css' data-notiid='{{index}}'>
+        <view class='text_css' data-notiid='{{index}}'>
         <text class='name_fa' data-notiid='{{index}}'>{{item.fromnickname}}</text>
         <text class='say_what' data-notiid='{{index}}'>{{item.msg}}</text>
       </view>
