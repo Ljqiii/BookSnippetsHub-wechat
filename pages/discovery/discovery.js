@@ -1,16 +1,20 @@
 const app = getApp()
 
+import Toast from '../../vant/toast/toast';
+
+const feedutil = require('../../utils/feedutil.js')
+
+
 Page({
 
   data: {
 
     isFolded: true,
 
-
-
     loginbtn: true,
     baseurl: "",
     alllikebook: [],
+
     allrecommendfeedsid: [],
     recommendfeeds: [],
     displayfollowbtn: true,
@@ -18,10 +22,27 @@ Page({
   },
 
 
-  change: function (e) {
+  change: function(e) {
     this.setData({
       isFolded: !this.data.isFolded,
     })
+  },
+  changefolded:function(e){
+    console.log(e)
+    var index=e.target.dataset.index
+    var that = this
+
+    // if (from == "recommand") {
+      var temp = that.data.recommendfeeds
+
+    temp[index].isFolded = !temp[index].isFolded
+
+      that.setData({
+        recommendfeeds: temp
+      })
+    // }
+
+
   },
 
 
@@ -86,67 +107,38 @@ Page({
     }
   },
 
-  likefeed: function(id, index, from) {
+  //喜欢feed 函数回调
+  likefeedcallback: function(res, from, index) {
     var that = this
-    console.log("in function like feed")
-    wx.request({
-      url: app.globalData.baseurl + '/likefeed',
-      method: "POST",
-      header: {
-        Authorization: wx.getStorageSync("token")
-      },
-      data: {
-        feedid: id
-      },
-      success: res => {
+    if (from == "recommand") {
+      var temp = that.data.recommendfeeds
+      console.log(temp)
+      temp[index].isliked = true
+      temp[index].likecount = temp[index].likecount + 1
 
-        if (from == "recommand") {
-          var temp = that.data.recommendfeeds
-          console.log(temp)
-          temp[index].isliked = true
-          temp[index].likecount = temp[index].likecount + 1
+      that.setData({
+        recommendfeeds: temp
+      })
+    }
+  },
+  //dis喜欢feed 函数回调
+  dislikefeedcallback: function(res, from, index) {
 
-          that.setData({
-            recommendfeeds: temp
-          })
-        }
+    var that = this
+    if (from == "recommand") {
 
-        console.log(res)
-      }
-    })
+      var temp = that.data.recommendfeeds
+      console.log(temp)
+
+      temp[index].isliked = false
+      temp[index].likecount = temp[index].likecount - 1
+
+      that.setData({
+        recommendfeeds: temp
+      })
+    }
   },
 
-  dislikefeed: function(id, index, from) {
-    var that = this
-    console.log("in function dislike feed")
-    wx.request({
-      url: app.globalData.baseurl + '/dislikefeed',
-      method: "POST",
-      header: {
-        Authorization: wx.getStorageSync("token")
-      },
-      data: {
-        feedid: id
-      },
-      success: res => {
-
-        if (from == "recommand") {
-          var temp = that.data.recommendfeeds
-          console.log(temp)
-
-          temp[index].isliked = false
-          temp[index].likecount = temp[index].likecount - 1
-
-          that.setData({
-            recommendfeeds: temp
-          })
-        }
-
-
-        console.log(res)
-      }
-    })
-  },
 
   likeordislikethisfeedbtn: function(e) {
     console.log(e)
@@ -168,9 +160,13 @@ Page({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           if (status == false) {
-            this.likefeed(id, index, from)
+
+            feedutil.likefeed(id, index, from, that.likefeedcallback)
+            // this.likefeed(id, index, from)
           } else {
-            this.dislikefeed(id, index, from)
+            feedutil.dislikefeed(id, index, from, that.dislikefeedcallback)
+
+            // this.dislikefeed(id, index, from)
           }
         } else {
           wx.navigateTo({
@@ -180,17 +176,42 @@ Page({
       }
     })
   },
+  forwardthisfeedcallback: function(res, from, index) {
+    console.log(res)
+    var that = this
+
+
+    if (from == "recommand") {
+
+      var temp = that.data.recommendfeeds
+      console.log(temp)
+
+      temp[index].isforward = true
+      that.setData({
+        recommendfeeds: temp
+      })
+    }
+
+
+  },
 
   forwardthisfeed: function(e) {
+    var that = this
+
+
     console.log(e)
     var index = e.target.dataset.index
     var id = e.target.dataset.id
+    var from = e.target.dataset.from
 
-    this.setData({
-
-
-    })
-
+    if (from == "recommand") {
+      if (wx.getStorageSync("userid") == this.data.recommendfeeds[index].userid) {
+        Toast('不能转发自己的分享');
+        // console.log("不能转发自己的")
+      } else {
+        feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
+      }
+    }
 
   },
 
@@ -217,6 +238,10 @@ Page({
     })
   },
 
+
+
+
+
   needlogin: function() {
     var that = this
     wx.getSetting({
@@ -231,9 +256,10 @@ Page({
     })
   },
 
-  onLoad: function(options) {
-    this.needlogin()
 
+  onLoad: function(options) {
+
+    this.needlogin()
     this.setData({
       baseurl: app.globalData.baseurl,
       userid: wx.getStorageSync("userid")
@@ -276,7 +302,7 @@ Page({
   },
   disfollow: function(e) {
     console.log(e)
-    var userid=e.target.dataset.userid
+    var userid = e.target.dataset.userid
 
   },
 

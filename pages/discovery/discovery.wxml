@@ -6,3 +6,4 @@
     <include src="myfollow.wxml" />
   </van-tab>
 </van-tabs>
+<van-toast id="van-toast" />

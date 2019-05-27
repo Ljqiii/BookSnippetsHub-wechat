@@ -67,6 +67,7 @@ Page({
 
   },
   addcomment: function() {
+    var that = this
     wx.request({
       url: app.globalData.baseurl + '/addcomment',
       method: "POST",
@@ -79,16 +80,26 @@ Page({
       },
       success: function(res) {
         console.log(res)
+
+        var temp = that.data.comments
+        console.log(temp)
+
+        temp.push(res.data.comment)
+        console.log(res.data.comment)
+        console.log(temp)
+
+        that.setData({
+          comments: temp
+        })
       }
     })
   },
 
   addcommentbtn: function(e) {
-    var that=this
+    var that = this
     if (wx.getStorageSync("hasuserinfo") == true) {
       this.addcomment()
-    }
-    else{
+    } else {
       wx.request({
         url: app.globalData.baseurl + "/auth/uploadWxUserinfo",
         method: "POST",

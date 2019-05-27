@@ -4,7 +4,7 @@
   </view>
 </view>
 
-<view style='font-size:40rpx;background:#eeeeee;width:750rpx;margin-bottom:10rpx'>历史评论</view>
+<view style='font-size:40rpx;background:#eeeeee;width:750rpx;margin-bottom:10rpx;margin-top:-18rpx'>历史评论</view>
 
 
 <!-- <view wx:for="{{comments}}">

@@ -4,6 +4,7 @@
     <view wx:if="{{item.bookcoverimgurl!='/bookcover/null'}}" class='Layout'>      
       <image class='bookImage' src='{{baseurl}}{{bookcoverimgurl}}' mode="aspectFit"></image>
     </view>
+    
     <view wx:else class='Layout'>      
       <image class='bookImage' src='/img/bookdefault.png' mode="aspectFit"></image>
     </view>

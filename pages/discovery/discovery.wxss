@@ -1,18 +1,15 @@
-.underline{
+.underline {
   text-decoration: underline;
 }
 
-
-
-
-page{
+page {
   width: 750rpx;
   height: auto;
- 
 }
 
 /*标题  */
-.title{
+
+.title {
   height: 100rpx;
   line-height: 100rpx;
   font-size: 42rpx;
@@ -23,28 +20,40 @@ page{
 }
 
 /*文本描述  */
-.conts{
 
+.conts {
   background: url('http://127.0.0.1:8080/bgimg/11.png');
-  display: -webkit-box; 
-  -webkit-box-orient: vertical; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   max-height: 600rpx;
   overflow: hidden;
-  text-overflow:ellipsis;
-}
-.conts1{
- background: url('http://127.0.0.1:8080/bgimg/11.png');
-  display: -webkit-box; 
-  -webkit-box-orient: vertical; 
+  text-overflow: ellipsis;
 }
 
-/*切换  */  
- .state{
+.conts1 {
+  background: url('http://127.0.0.1:8080/bgimg/11.png');
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/*切换  */
+
+.state {
   color: cyan;
   float: right;
   font-size: 30rpx;
   margin: 30rpx;
 }
 
+.folded {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-height: 600rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-
+.notfolded {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

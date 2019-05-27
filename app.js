@@ -6,10 +6,12 @@ App({
   globalData: {
     hasuserinfo: "",
     userInfo: null,
-    baseurl: "https://api.booksnippetshub.com" //change this
-    // baseurl: "http://127.0.0.1:8081" //change this
+    // baseurl: "https://api.booksnippetshub.com" //change this
+    baseurl: "http://127.0.0.1:8081" //change this
   },
   onLaunch: function() {
+
+
     wx.setStorageSync("hasuserinfo", false)
 
     // 展示本地存储能力
