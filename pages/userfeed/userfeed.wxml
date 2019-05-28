@@ -1,7 +1,7 @@
-<view wx:if="{{from!=self}}">
+<!-- <view wx:if="{{from!=self}}">
 userinfo
 
-</view>
+</view> -->
 
 <view wx:if="{{allmylikefeed}}">
   <view wx:for="{{allmylikefeed}}" data-id='{{item.id}}' data-index='{{index}}'>

@@ -1,7 +1,7 @@
 <!-- <image mode="aspectFill" style='z-index:-100;position: fixed;left: 0rpx;top:0px;width:750rpx' src='{{bgimgurl}}'>
 </image> -->
 
-<view style="background: url('{{bgimgurl}}'); min-height:850rpx">
+<view style="background: url('{{bgimgurl}}'); min-height:800rpx">
 
 
   <view style='text-align:center;padding-top:20rpx'>
@@ -30,24 +30,45 @@
     </view>
     <view style='height:1px;background-color:#e8e8e8;'></view>
     <view style='text-align:center'>
-      <textarea style='width:750rpx' rows="6" auto-height="true"  placeholder="写一点想法吧" confirm-type="done" bindinput='inputbookcomment'></textarea>
+      <textarea style='width:750rpx' rows="6" auto-height="true" placeholder="写一点想法吧" confirm-type="done" bindinput='inputbookcomment'></textarea>
     </view>
   </view>
 </view>
 
-<scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='bottom'>
-  <view wx:for="{{backgroundimages}}" class='scroll-x-item'>
-    <view>
-      <image src='{{baseurl}}{{item.uri}}'style="width:100rpx;height:100rpx" mode="aspectFill" data-imgid='{{item.id}}' data-imguri='{{baseurl}}{{item.uri}}' bindtap='setbgimgid'>
-      </image>
-    </view>
-    <text style="font-size:20rpx">{{item.name}}</text>
+<view class='bottom'>
+
+  <view style='border-bottom:1px solid #e8e8e8;margin-bottom:10rpx;width:750rpx'>
+    <image src='/img/bgtext.png' style='height:30rpx;width:30rpx;vertical-align:middle;' mode='aspectFill'></image>
+    <text style='font-size:30rpx;'>选择主题</text>
   </view>
-</scroll-view>
+
+  <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
+    <view wx:for="{{backgroundimages}}" class='scroll-x-item'>
+      <view>
+        <image src='{{baseurl}}{{item.uri}}' style="width:100rpx;height:100rpx" mode="aspectFill" data-imgid='{{item.id}}' data-imguri='{{baseurl}}{{item.uri}}' bindtap='setbgimgid'>
+        </image>
+      </view>
+      <!-- <text style="font-size:20rpx">{{item.name}}</text> -->
+    </view>
+  </scroll-view>
+
+  <view style='border-bottom:1px solid #e8e8e8;width:750rpx'> </view>
+</view>
+
+
 <!-- 
 <button style='position: fixed;left: 0rpx;bottom: 0rpx;width:750rpx' bindtap='send'>发布</button> -->
-<view>
-<view style="position: fixed;right:60rpx;bottom: 8rpx;" >
-  <image src='/img/fabu.png' bindtap='send' style='width:80rpx;height:80rpx;'></image>
-</view>
+<!-- <view style='text-align:center'> -->
+
+  <view style="position: fixed;right:275rpx;bottom: 8rpx;">
+  <van-button round type="danger" bindtap='send'>
+    <image src='/img/fabu.png' bindtap='send' style='width:52rpx;height:52rpx;vertical-align:middle;'></image>
+    <text style='font-size:35rpx;'>发布</text>
+  </van-button>
+
+  <!-- <button bindtap='send' style=''>
+      <image src='/img/fabu.png' bindtap='send' style='width:52rpx;height:52rpx;vertical-align:middle;'></image>
+      <text style='font-size:35rpx;'>发布</text>
+    </button> -->
+  <!-- </view> -->
 </view>

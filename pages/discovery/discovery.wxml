@@ -1,9 +1,23 @@
-<van-tabs active="0" bind:change="onChange" animated>
+<include src="recommend.wxml" />
+
+<!-- <van-tabs active="0" bind:change="onChange" animated>
   <van-tab title="推荐">
     <include src="recommend.wxml" />
   </van-tab>
+
   <van-tab title="关注">
     <include src="myfollow.wxml" />
   </van-tab>
-</van-tabs>
+
+</van-tabs> -->
+
 <van-toast id="van-toast" />
+
+<view wx:if="{{isloading}}" style='text-align:center;margin-top:50rpx'>
+  <van-loading />
+  <view style='height:20rpx'></view>
+  <view style='color:#e8e8e8'>
+    加载中
+  </view>
+
+</view>

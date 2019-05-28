@@ -17,9 +17,11 @@
   width: 85rpx;
   height: 85rpx;
   vertical-align: middle;
+  border-radius: 100%;
 }
 
 .text_css {
+  
   width: 600rpx;
   margin-left: 16rpx;
   display: flex;

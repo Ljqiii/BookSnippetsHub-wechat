@@ -116,42 +116,65 @@ Page({
     })
   },
   send: function() {
-    var that = this
-    if (wx.getStorageSync("hasuserinfo") == true) {
-      wx.request({
-        url: this.data.baseurl + '/addfeed',
-        data: {
-          bookname: this.data.bookname,
-          bookcontent: this.data.bookcontent,
-          bookcomment: this.data.bookcomment,
-          bgimgid: this.data.bgimgid
-        },
-        method: "POST",
-        header: {
-          Authorization: wx.getStorageSync("token")
-        },
-        success: function(e) {
-          if (e.data["errcode"] == 0) {
-            wx.showToast({
-              title: '发布成功',
-              icon: 'success',
-              duration: 2000,
-              success: function() {
-                setTimeout(function() {
-                  wx.switchTab({
-                    url: '/pages/discovery/discovery'
-                  })
-                }, 2000)
-              }
-            })
-          } else {
-            wx.showToast({
-              title: '发布失败',
-              duration: 2000
-            })
-          }
-        }
+    if (this.data.bookname == '' || this.data.bookcontent == '') {
+      var toast = ''
+      if (this.data.bookname == '' && this.data.bookcontent != '') {
+        toast = '请填写书名'
+      }
+      if (this.data.bookname != '' && this.data.bookcontent == '') {
+        toast = '请填写内容'
+      }
+      if (this.data.bookname == '' && this.data.bookcontent == '') {
+        toast = '请填写书名和内容'
+      }
+
+
+      wx.showToast({
+        title: toast,
+        icon: 'none',
+        duration: 2000
       })
+
+
+
+    } else {
+      var that = this
+      if (wx.getStorageSync("hasuserinfo") == true) {
+        wx.request({
+          url: this.data.baseurl + '/addfeed',
+          data: {
+            bookname: this.data.bookname,
+            bookcontent: this.data.bookcontent,
+            bookcomment: this.data.bookcomment,
+            bgimgid: this.data.bgimgid
+          },
+          method: "POST",
+          header: {
+            Authorization: wx.getStorageSync("token")
+          },
+          success: function(e) {
+            if (e.data["errcode"] == 0) {
+              wx.showToast({
+                title: '发布成功',
+                icon: 'success',
+                duration: 2000,
+                success: function() {
+                  setTimeout(function() {
+                    wx.switchTab({
+                      url: '/pages/discovery/discovery'
+                    })
+                  }, 2000)
+                }
+              })
+            } else {
+              wx.showToast({
+                title: '发布失败',
+                duration: 2000
+              })
+            }
+          }
+        })
+      }
     }
   }
 })

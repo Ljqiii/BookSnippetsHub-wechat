@@ -40,11 +40,33 @@ const likefeed = function(id, index, from, func) {
   })
 }
 
-const forwardfeed = function(id, index, from, func) {
+const forwardfeed = function (id, index, from, func) {
   var that = this
   console.log("in function forwardfeed")
   wx.request({
     url: app.globalData.baseurl + '/forward',
+    method: "POST",
+    header: {
+      Authorization: wx.getStorageSync("token")
+    },
+    data: {
+      feedid: id
+    },
+    success: res => {
+      console.log(res)
+      func(res, from, index)
+      // func(res, from, index)
+
+    }
+  })
+}
+
+
+const disforwardfeed = function (id, index, from, func) {
+  var that = this
+  console.log("in function forwardfeed")
+  wx.request({
+    url: app.globalData.baseurl + '/disforward',
     method: "POST",
     header: {
       Authorization: wx.getStorageSync("token")
@@ -68,7 +90,8 @@ const forwardfeed = function(id, index, from, func) {
 module.exports = {
   dislikefeed: dislikefeed,
   likefeed: likefeed,
-  forwardfeed: forwardfeed
+  forwardfeed: forwardfeed,
+  disforwardfeed: disforwardfeed
   // disforwardfeed: disforwardfeed
 
 }

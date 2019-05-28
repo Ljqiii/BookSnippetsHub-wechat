@@ -1,7 +1,7 @@
 <van-row>
   <van-col span="3"></van-col>
   <van-col span="4">
-    <image src='{{item.avatarUrl}}' style='height:80rpx;width:80rpx;padding-left:20rpx;padding-top:5rpx'></image>
+    <image src='{{item.avatarUrl}}' style='border-radius: 100%;height:80rpx;width:80rpx;margin-left:20rpx;margin-top:5rpx'></image>
   </van-col>
   <van-col span="1"></van-col>
   <van-col span="16">
@@ -66,7 +66,8 @@
 
 
 <!-- options  -->
-<view style='height:60rpx;width:781rpx;padding-top:10rpx;box-shadow:0px -25rpx 25rpx -16rpx #c9c9c9;'>
+<!-- <view style='height:60rpx;width:781rpx;padding-top:10rpx;box-shadow:0px -25rpx 25rpx -16rpx #c9c9c9;'> -->
+<view style='height:60rpx;width:750rpx;padding-top:10rpx;box-shadow:0px -25rpx 25rpx -16rpx #c9c9c9;'>
 
   <van-row style="text-align:center;background-color:#E2E9EE;height:50rpx;box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;" class="optionsbar">
 
@@ -85,8 +86,9 @@
       <image wx:if="{{item.isforward!=true}}" src='/img/forward.png' mode="aspectFit" style='height:35rpx;width:35rpx;vertical-align:middle' data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}"></image>
       <image wx:else src='/img/forwardfill.png' mode="aspectFit" style='height:35rpx;width:35rpx;vertical-align:middle' data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}"></image>
     </van-col>
-    <van-col span="1" >
-    </van-col>
+
+    <!-- <van-col span="1" >
+    </van-col> -->
 
   </van-row>
 </view>

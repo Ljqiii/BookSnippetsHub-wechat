@@ -39,6 +39,7 @@ page {
 /*切换  */
 
 .state {
+  
   color: cyan;
   float: right;
   font-size: 30rpx;

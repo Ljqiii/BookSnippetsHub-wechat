@@ -21,7 +21,7 @@
 <van-row>
   <van-col span="3"></van-col>
   <van-col span="4">
-    <image src='{{item.AvatarUrl}}' style='height:80rpx;width:80rpx;padding-left:20rpx;padding-top:5rpx'></image>
+    <image src='{{item.AvatarUrl}}' style='border-radius: 100%;height:80rpx;width:80rpx;margin-left:20rpx;margin-top:5rpx'></image>
   </van-col>
   <van-col span="1"></van-col>
   <van-col span="16">
@@ -42,8 +42,6 @@
 <view style='text-align:center;margin-bottom:170rpx;margin-top:20rpx;color:#e2e9ee'>
   <text>- 没有更多内容 -</text>
 </view>
-
-
 
 <van-cell-group class="atbottom" style="width:750rpx">
   <van-field value="{{ commentvalue }}" center clearable placeholder="评论一下" border="{{ true }}" use-button-slot bind:change="oncommentinputchange">

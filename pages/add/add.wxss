@@ -31,7 +31,7 @@
 .bottom {
   position: fixed;
   left: 0rpx;
-  bottom: 50rpx;
+  bottom: 120rpx;
 }
 .placeholderblack{
   color:black;

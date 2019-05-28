@@ -8,9 +8,8 @@ const feedutil = require('../../utils/feedutil.js')
 Page({
 
   data: {
-
+    isloading: false,
     isFolded: true,
-
     loginbtn: true,
     baseurl: "",
     alllikebook: [],
@@ -27,22 +26,18 @@ Page({
       isFolded: !this.data.isFolded,
     })
   },
-  changefolded:function(e){
+  changefolded: function(e) {
     console.log(e)
-    var index=e.target.dataset.index
+    var index = e.target.dataset.index
     var that = this
 
-    // if (from == "recommand") {
-      var temp = that.data.recommendfeeds
+    var temp = that.data.recommendfeeds
 
     temp[index].isFolded = !temp[index].isFolded
 
-      that.setData({
-        recommendfeeds: temp
-      })
-    // }
-
-
+    that.setData({
+      recommendfeeds: temp
+    })
   },
 
 
@@ -176,7 +171,7 @@ Page({
       }
     })
   },
-  forwardthisfeedcallback: function(res, from, index) {
+  forwardthisfeedcallback: function (res, from, index) {
     console.log(res)
     var that = this
 
@@ -191,13 +186,25 @@ Page({
         recommendfeeds: temp
       })
     }
+  },
 
+  disforwardthisfeedcallback: function (res, from, index) {
+    console.log(res)
+    var that = this
+    if (from == "recommand") {
 
+      var temp = that.data.recommendfeeds
+      console.log(temp)
+
+      temp[index].isforward = false
+      that.setData({
+        recommendfeeds: temp
+      })
+    }
   },
 
   forwardthisfeed: function(e) {
     var that = this
-
 
     console.log(e)
     var index = e.target.dataset.index
@@ -205,14 +212,20 @@ Page({
     var from = e.target.dataset.from
 
     if (from == "recommand") {
-      if (wx.getStorageSync("userid") == this.data.recommendfeeds[index].userid) {
-        Toast('不能转发自己的分享');
-        // console.log("不能转发自己的")
-      } else {
-        feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
+      if (this.data.recommendfeeds[index].isforward == false) {
+        if (wx.getStorageSync("userid") == this.data.recommendfeeds[index].userid) {
+          Toast('不能转发自己的分享');
+          // console.log("不能转发自己的")
+        } else {
+          feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
+          Toast('分享成功');
+        }
       }
+     else{
+        feedutil.disforwardfeed(id, index, from, this.disforwardthisfeedcallback)
+        Toast('已取消分享');
+     } 
     }
-
   },
 
   getrecommendfeed: function() {
@@ -222,6 +235,9 @@ Page({
     wx.request({
       url: app.globalData.baseurl + "/getrecommendfeed",
       method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
       data: {
         allrecommendfeedsid: that.data.allrecommendfeedsid
       },
@@ -231,16 +247,22 @@ Page({
           that.getrecommendfeed()
         }
         console.log(res)
+
+        var tempallrecommendfeedsid = that.data.allrecommendfeedsid
+        for (var i = 0; i < res.data.length; i++) {
+          tempallrecommendfeedsid.push(res.data[i].id)
+        }
         that.setData({
+          isloading: false,
+          allrecommendfeedsid: tempallrecommendfeedsid,
           recommendfeeds: that.data.recommendfeeds.concat(res.data)
         })
+        wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
+
       }
     })
   },
-
-
-
-
 
   needlogin: function() {
     var that = this
@@ -326,13 +348,27 @@ Page({
    */
   onPullDownRefresh: function() {
 
+    this.setData({
+      allrecommendfeedsid: [],
+      recommendfeeds: []
+    })
+    wx.showNavigationBarLoading()
+    this.getrecommendfeed()
+
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    if (this.data.allrecommendfeedsid.length % 10 == 0) {
+      console.log("onReachBottom")
+      this.setData({
+        isloading: true
+      })
+      this.getrecommendfeed()
+    }
   },
 
   /**

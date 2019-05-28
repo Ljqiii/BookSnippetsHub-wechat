@@ -89,7 +89,8 @@ Page({
         console.log(temp)
 
         that.setData({
-          comments: temp
+          comments: temp,
+          commentvalue: ""
         })
       }
     })

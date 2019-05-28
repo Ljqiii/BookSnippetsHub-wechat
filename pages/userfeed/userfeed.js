@@ -71,6 +71,20 @@ Page({
       }
     })
   },
+  changefolded: function (e) {
+    console.log(e)
+    var index = e.target.dataset.index
+    var that = this
+
+    var temp = that.data.allmylikefeed
+
+    temp[index].isFolded = !temp[index].isFolded
+
+    that.setData({
+      allmylikefeed: temp
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -84,6 +98,12 @@ Page({
    */
   onShow: function() {
 
+  },
+  navigateTofeedcomment: function (e) {
+    wx.navigateTo({
+      url: '/pages/feedcomment/feedcomment?feedid=' + e.target.dataset.feedid,
+    })
+    console.log(e)
   },
 
   /**
