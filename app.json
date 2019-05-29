@@ -23,6 +23,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color":"black",
     "list": [
       {
         "pagePath": "pages/discovery/discovery",

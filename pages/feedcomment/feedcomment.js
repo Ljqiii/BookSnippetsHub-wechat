@@ -1,5 +1,7 @@
 // pages/feedcomment/feedcomment.js
 const app = getApp()
+import Toast from '../../vant/toast/toast';
+
 
 Page({
 
@@ -68,32 +70,38 @@ Page({
   },
   addcomment: function() {
     var that = this
-    wx.request({
-      url: app.globalData.baseurl + '/addcomment',
-      method: "POST",
-      header: {
-        Authorization: wx.getStorageSync("token")
-      },
-      data: {
-        feedid: this.data.feedid,
-        commentvalue: this.data.commentvalue
-      },
-      success: function(res) {
-        console.log(res)
 
-        var temp = that.data.comments
-        console.log(temp)
+    if (this.data.commentvalue != '') {
+      wx.request({
+        url: app.globalData.baseurl + '/addcomment',
+        method: "POST",
+        header: {
+          Authorization: wx.getStorageSync("token")
+        },
+        data: {
+          feedid: this.data.feedid,
+          commentvalue: this.data.commentvalue
+        },
+        success: function(res) {
+          console.log(res)
 
-        temp.push(res.data.comment)
-        console.log(res.data.comment)
-        console.log(temp)
+          var temp = that.data.comments
+          console.log(temp)
 
-        that.setData({
-          comments: temp,
-          commentvalue: ""
-        })
-      }
-    })
+          temp.push(res.data.comment)
+          console.log(res.data.comment)
+          console.log(temp)
+
+          that.setData({
+            comments: temp,
+            commentvalue: ""
+          })
+        }
+      })
+    } else {
+      // do nothing
+
+    }
   },
 
   addcommentbtn: function(e) {

@@ -1,3 +1,8 @@
 {
+
+  "navigationBarBackgroundColor": "#1D82FE",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "关于软件",
+
   "usingComponents": {}
 }

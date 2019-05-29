@@ -1,11 +1,11 @@
-<view style='width:750rpx'>
+<view style='width:750rpx;background-color:#f0f0f0' >
 
   <view class='Containerbook' style='align-items: center;'>
-    <view wx:if="{{item.bookcoverimgurl!='/bookcover/null'}}" class='Layout'>      
+    <view wx:if="{{item.bookcoverimgurl!='/bookcover/null'}}" class='Layout'>
       <image class='bookImage' src='{{baseurl}}{{bookcoverimgurl}}' mode="aspectFit"></image>
     </view>
-    
-    <view wx:else class='Layout'>      
+
+    <view wx:else class='Layout'>
       <image class='bookImage' src='/img/bookdefault.png' mode="aspectFit"></image>
     </view>
 
@@ -20,12 +20,15 @@
   </view>
 
   <view style='font-weight:bold;font-size:40rpx'>简介</view>
-  <view style='border:10rpx;text-indent:60rpx;text-align: left;width:750rpx;border-bottom: 1rpx solid #eee;margin-bottom:30rpx'>
-    <view>
-      <text>{{description}}</text>
+  <view style='border:10rpx;text-indent:60rpx;text-align: left;width:750rpx;border-bottom: 1rpx solid #eee;margin-bottom:30rpx;'>
+    <view style='padding-left:20rpx;padding-right:20rpx;'>
+      <text style='color:#222222'>{{description}}</text>
     </view>
   </view>
+  <view style='height:25rpx'></view>
+
 </view>
+<view style='height:5rpx'></view>
 
 
 <view wx:if="{{allfeed}}">

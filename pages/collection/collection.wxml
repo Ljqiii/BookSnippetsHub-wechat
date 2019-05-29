@@ -1,20 +1,34 @@
-<van-tabs active="0" bind:change="onChange" animated>
+<van-tabs active="0" bind:change="onChange" animated color="#4d9af9">
   <van-tab title="关注">
     <view wx:if="{{!loginbtn}}">
       <include src="alllikebook.wxml" />
     </view>
     <view wx:else>
-      <include src="/pages/login.wxml" />
+      <view wx:if="{{isloading}}">
+        <include src="/pages/loading.wxml" />
+      </view>
+
+      <view wx:else>
+        <include src="/pages/login.wxml" />
+      </view>
     </view>
-
   </van-tab>
-
+  
   <van-tab title="书库">
     <view wx:if="{{!loginbtn}}">
       <include src="allbook.wxml" />
     </view>
+
+
     <view wx:else>
-      <include src="/pages/login.wxml" />
+      <view wx:if="{{isloading}}">
+        <include src="/pages/loading.wxml" />
+      </view>
+
+      <view wx:else>
+        <include src="/pages/login.wxml" />
+      </view>
     </view>
+
   </van-tab>
 </van-tabs>

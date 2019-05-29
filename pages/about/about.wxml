@@ -1,9 +1,9 @@
-<view style='text-align:center;margin-top:70rpx'>
+<view style='text-align:center;margin-top:200rpx'>
   <image src='/img/1.png' class='img-300'>
   </image>
 </view>
-<view style='text-align:center;margin-top:70rpx'>
-  <text style='color:#000000'>读书分享</text>
+<view style='text-align:center;margin-top:100rpx'>
+  <text style='color:#000000'>醉书摘</text>
 </view>
 <view style='text-align:center;margin-top:30rpx'>
   <text style='color:#aaaaaa'>Team：捕猎人</text>

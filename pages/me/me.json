@@ -1,4 +1,11 @@
 {
+  "navigationBarBackgroundColor": "#1D82FE",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我",
+  "backgroundTextStyle": "dark",
+
+  
+  
   "usingComponents": {
     "van-button": "/vant/button/index",
     "van-row": "/vant/row/index",

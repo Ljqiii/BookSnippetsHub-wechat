@@ -6,6 +6,7 @@ import Toast from '../../vant/toast/toast';
 Page({
 
   data: {
+    isloading:true,
     loginbtn: true,
     baseurl: "",
     notifications: [],
@@ -57,12 +58,9 @@ Page({
 
         Toast.success({
           duration: 800,      
-          forbidClick: true, // 禁用背景点击
-           message: '删除成功',
-          
+          forbidClick: true, 
+           message: '删除成功'
         });
-
-
 
       }
     })
@@ -129,6 +127,13 @@ Page({
 
   onLoad: function(options) {
     var that = this
+
+    setTimeout(function(){
+      that.setData({
+        isloading: false
+      })
+    },400)
+
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {

@@ -30,7 +30,7 @@
 
     </van-row>
     <van-row>
-      <text style="color:black;font-size:35rpx">{{item.comment}}</text>
+      <text style="color:black;font-size:24rpx">{{item.comment}}</text>
     </van-row>
   </van-col>
   </van-row>
@@ -45,6 +45,8 @@
 
 <van-cell-group class="atbottom" style="width:750rpx">
   <van-field value="{{ commentvalue }}" center clearable placeholder="评论一下" border="{{ true }}" use-button-slot bind:change="oncommentinputchange">
-    <van-button slot="button" size="small" type="primary" open-type="getUserInfo" bindgetuserinfo='addcommentbtn'>评论</van-button>
+    <van-button slot="button" size="small" type="primary" open-type="getUserInfo" bindgetuserinfo='addcommentbtn' disabled="{{commentvalue==''}}">评论</van-button>
   </van-field>
 </van-cell-group>
+
+<van-toast id="van-toast" duration="1500"/>

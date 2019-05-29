@@ -39,7 +39,7 @@
 
   <view style='border-bottom:1px solid #e8e8e8;margin-bottom:10rpx;width:750rpx'>
     <image src='/img/bgtext.png' style='height:30rpx;width:30rpx;vertical-align:middle;' mode='aspectFill'></image>
-    <text style='font-size:30rpx;'>选择主题</text>
+    <text style='font-size:30rpx;vertical-align:middle;'>选择主题</text>
   </view>
 
   <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
@@ -56,19 +56,12 @@
 </view>
 
 
-<!-- 
-<button style='position: fixed;left: 0rpx;bottom: 0rpx;width:750rpx' bindtap='send'>发布</button> -->
-<!-- <view style='text-align:center'> -->
 
   <view style="position: fixed;right:275rpx;bottom: 8rpx;">
   <van-button round type="danger" bindtap='send'>
-    <image src='/img/fabu.png' bindtap='send' style='width:52rpx;height:52rpx;vertical-align:middle;'></image>
-    <text style='font-size:35rpx;'>发布</text>
+    <image src='/img/fabu.png' bindtap='send' style='width:45rpx;height:45rpx;vertical-align:middle;'></image>
+    <text style='font-size:35rpx;vertical-align:middle;'>发布</text>
   </van-button>
 
-  <!-- <button bindtap='send' style=''>
-      <image src='/img/fabu.png' bindtap='send' style='width:52rpx;height:52rpx;vertical-align:middle;'></image>
-      <text style='font-size:35rpx;'>发布</text>
-    </button> -->
-  <!-- </view> -->
+
 </view>

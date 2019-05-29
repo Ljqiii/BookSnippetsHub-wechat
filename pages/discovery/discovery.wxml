@@ -1,3 +1,6 @@
+<view style='height:10rpx'></view>
+
+
 <include src="recommend.wxml" />
 
 <!-- <van-tabs active="0" bind:change="onChange" animated>

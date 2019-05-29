@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+
+    isloading: true,
     loginbtn: true,
 
     Arraylist: [1],
@@ -15,11 +17,11 @@ Page({
     allbook: [],
     alllikebook: [],
 
-    title:"关注"
+    title: "关注"
 
   },
 
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
 
     this.setData({
@@ -46,10 +48,10 @@ Page({
     })
   },
 
-  onChange:function(e){
+  onChange: function(e) {
     console.log(e)
     this.setData({
-      title:e.detail.title
+      title: e.detail.title
     })
   },
   navigateToBookPage: function(e) {
@@ -101,6 +103,13 @@ Page({
   },
   onLoad: function(options) {
     var that = this
+
+    setTimeout(function() {
+      that.setData({
+        isloading: false
+      })
+    }, 400)
+    
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -151,11 +160,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    var that=this
+    var that = this
     wx.showNavigationBarLoading()
-    if(this.data.title=="关注"){
+    if (this.data.title == "关注") {
       that.getalllikebook()
-    }else{
+    } else {
       that.getallbook()
     }
 

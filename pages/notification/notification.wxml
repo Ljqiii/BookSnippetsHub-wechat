@@ -1,4 +1,4 @@
-
+<view style='height:10rpx'></view>
 
 <view wx:if="{{!loginbtn}}">
 
@@ -20,7 +20,7 @@
           </van-col>
 
         </van-row>
-     
+
 
       </slide-delete>
     </view>
@@ -30,9 +30,17 @@
 </view>
 
 <view wx:else>
-  <include src="/pages/login.wxml" />
+
+  <view wx:if="{{isloading}}">
+    <include src="/pages/loading.wxml" />
+  </view>
+
+  <view wx:else>
+    <include src="/pages/login.wxml" />
+  </view>
+
 </view>
 
 
 
-<van-toast id="van-toast" duration="1500"/>
+<van-toast id="van-toast" duration="1500" />

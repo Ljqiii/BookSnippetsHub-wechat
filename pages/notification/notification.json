@@ -7,6 +7,7 @@
   "onReachBottomDistance":50,
   
   "usingComponents": {
+    "van-loading": "/vant/loading/index",
     "slide-delete": "../../components/slide-delete/index",
     "van-popup": "/vant/popup/index",
     "vant-button": "/vant/button/index",

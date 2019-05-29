@@ -1,39 +1,56 @@
 /* pages/collection/collection.wxss */
-.Containerbook{
+
+.Containerbook {
   display: flex;
   padding: 20rpx;
   border-bottom: 1rpx solid #eee;
 }
-.bookImage{
-  width:100rpx;
-  
+
+.bookImage {
+  width: 100rpx;
   height: 100rpx;
 }
-.bookCon{
+
+.bookCon {
   line-height: 24px;
   display: flex;
   flex-direction: column;
   width: 66%;
   margin-left: 20rpx;
 }
-.bookname{
-   vertical-align: middle;
-   font-size: 32rpx;
-   font-weight: bolder;
-   /*文本...形式*/
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow:ellipsis;
-}
-.bookcountry{
-   font-size: 32rpx;
-   font-weight: bolder;
-}
-.bookdirector{
+
+.bookname {
   vertical-align: middle;
-   font-size: 32rpx;
-   font-weight: bolder;
-   }
-.Layout{
+  font-size: 32rpx;
+  font-weight: bolder;
+  /*文本...形式*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookcountry {
+  font-size: 32rpx;
+  font-weight: bolder;
+}
+
+.bookdirector {
+  vertical-align: middle;
+  font-size: 25rpx;
+  font-weight: bolder;
+  line-height: 27rpx;
+  color: #aaa;
+  /*关键属性（必须有的）  */
+  display: -webkit-box;
+  /*规定子元素的排列方向 */
+  -webkit-box-orient: vertical;
+  /*限制文本显示的行数  */
+  -webkit-line-clamp: 2;
+  /*实现多余的文字隐藏并用省略号来代表被隐藏的文字  */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Layout {
   width: 120rpx;
 }
