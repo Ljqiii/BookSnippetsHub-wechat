@@ -1,6 +1,8 @@
 // pages/message/message.js
 const app = getApp()
 
+import Toast from '../../vant/toast/toast';
+
 Page({
 
   data: {
@@ -10,10 +12,62 @@ Page({
     popupshow: false,
     popupnotificationindex: -1,
 
+
   },
-  deleteSystemMessage(){
+  deleteSystemMessage() {
+
+  },
+
+  handleSlideDelete({
+    detail: {
+      id
+    }
+  }) {
+    var that = this
+
+    console.log(id)
+    wx.request({
+      url: app.globalData.baseurl + '/delnotification',
+      data: {
+        id: id
+      },
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      success: function(res) {
+
+        var notifications = that.data.notifications
+
+
+        var index = -1
+        for (var i = 0; i < notifications.length; i++) {
+
+          if (notifications[i].id == id) {
+            index = i
+            break
+          }
+        }
+
+        notifications.splice(index, 1)
+        that.setData({
+          notifications:notifications
+        })
     
+
+        Toast.success({
+          duration: 800,      
+          forbidClick: true, // 禁用背景点击
+           message: '删除成功',
+          
+        });
+
+
+
+      }
+    })
   },
+
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
 
@@ -42,7 +96,7 @@ Page({
   },
 
   onReachBottom: function() {
-    console.log("safds")
+ 
   },
 
   onPullDownRefresh: function() {

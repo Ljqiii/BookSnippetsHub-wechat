@@ -14,6 +14,7 @@
 }
 
 .image_css {
+  margin-top: 10rpx;
   width: 85rpx;
   height: 85rpx;
   vertical-align: middle;
@@ -21,7 +22,6 @@
 }
 
 .text_css {
-  
   width: 600rpx;
   margin-left: 16rpx;
   display: flex;
@@ -36,13 +36,125 @@
 }
 
 .say_what {
+  display: -webkit-box;
+  /*规定子元素的排列方向 */
+  -webkit-box-orient: vertical;
+  /*限制文本显示的行数  */
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow:ellipsis;
   font-size: 23rpx;
   padding-bottom: 38rpx;
   border-bottom: 1px solid #f1f1f1;
-   color: #aaaaaa;
+  color: #aaa;
 }
 
 .popupview {
   height: 300rpx;
   width: 500rpx;
+}
+
+.title {
+  margin: 60rpx 0 30rpx;
+  font-size: 40rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #383a3d;
+}
+
+.product-list .product-item {
+  position: relative;
+  width: 100vw;
+  /* border-bottom: 2rpx solid #E9E9E9; */
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 999;
+}
+
+.slide-product-list .slide-product-item {
+  position: relative;
+  width: 100vw;
+  /* border-bottom: 2rpx solid #E9E9E9; */
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 999;
+}
+
+.product-list .product-item movable-area {
+  height: 120rpx;
+  width: calc(100vw - 120rpx);
+}
+
+.product-list .product-item movable-view {
+  height: 120rpx;
+  width: 100vw;
+  background: #fff;
+  z-index: 999;
+}
+
+.product-list .product-item .delete-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 120rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 120rpx;
+  z-index: 1;
+  background: #e66671;
+  text-align: center;
+}
+
+.product-list .product-item-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8rpx 0 20rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.product-list .product-item-wrap .product-movable-item {
+  flex: 1;
+  overflow: hidden;
+}
+
+.product-list .product-item-wrap .product-movable-item-name {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #71747a;
+  line-height: 60rpx;
+  margin-right: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.product-list .product-item-wrap .product-movable-item-code {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #969aa3;
+}
+
+.product-list .product-item-wrap .product-movable-item-amount {
+  flex: 0 0 auto;
+  padding-right: 80rpx;
+  position: relative;
+}
+
+.product-list .product-item-wrap .product-movable-item-amount .amount {
+  width: 120rpx;
+  font-size: 28rpx;
+  color: #383a3d;
+  line-height: 60rpx;
+}
+
+.product-list .product-item-wrap .product-movable-item-amount .unit {
+  position: absolute;
+  top: 0;
+  right: 30rpx;
+  font-size: 28rpx;
+  color: #969aa3;
+  line-height: 60rpx;
 }
