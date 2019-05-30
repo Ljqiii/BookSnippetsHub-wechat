@@ -5,14 +5,11 @@
         <image style='margin-left:30rpx' class='image_css' src="{{item.AvatarUrl}}" mode="aspectFit" data-notiid='{{index}}'></image>
       </van-col>
       <van-col span="20">
-        <text style='vertical-align:middle'>{{item.nickname}}</text>
-
-        <!-- <view style='height:10rpx'></view>
-        <view class='text_css' data-notiid='{{index}}' style='margin'>
-          <text class='name_fa' data-notiid='{{index}}'>{{item.nickname}}</text>
+        <view style='height:85rpx;margin-top: 10rpx;margin-left: 25rpx;'>
+          <text style='line-height:85rpx'>{{item.nickname}}</text>
         </view>
-         -->
       </van-col>
     </van-row>
+    <view style='height:8rpx'></view>
   </view>
 </view>

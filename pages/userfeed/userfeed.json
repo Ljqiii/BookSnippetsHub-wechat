@@ -7,6 +7,7 @@
     "van-col": "/vant/col/index",
     "van-tab": "/vant/tab/index",
     "van-tabs": "/vant/tabs/index",
-    "vant-button": "/vant/button/index"
+    "vant-button": "/vant/button/index",
+    "van-toast": "/vant/toast/index"
   }
 }

@@ -176,5 +176,18 @@ Page({
         wx.setStorageSync("hasuserinfo", true)
       }
     })
-  }
+  },
+  navigateTouserfeedmycollection: function () {
+    wx.navigateTo({
+      url: '/pages/userfeed/userfeed?title=我的收藏',
+    })
+  },
+
+  navigateTouserfeedmyshare: function () {
+    wx.navigateTo({
+      url: '/pages/userfeed/userfeed?title=我的分享',
+    })
+  },
+
+
 })

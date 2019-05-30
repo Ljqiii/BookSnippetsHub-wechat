@@ -49,3 +49,5 @@
 </view>
 
 <view style='height:200rpx'></view>
+
+<van-toast id="van-toast" />

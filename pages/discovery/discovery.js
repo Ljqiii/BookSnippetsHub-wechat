@@ -24,8 +24,13 @@ Page({
   followusercallback: function(res, from, userid) {
     console.log(res)
     console.log(from)
+
     if (res.data.isok == true) {
-      if (from == "recommend") {
+      console.log("in func followusercallback")
+      console.log(from)
+
+
+      if (from == "recommand") {
         var recommendfeeds = this.data.recommendfeeds
         for (var i = 0; i < recommendfeeds.length; i++) {
           if (recommendfeeds[i].userid == userid) {
@@ -36,6 +41,20 @@ Page({
           recommendfeeds: recommendfeeds
         })
       }
+
+      if (from == "allfollow") {
+        var recommendfeeds = this.data.allfollow
+        for (var i = 0; i < recommendfeeds.length; i++) {
+          if (recommendfeeds[i].userid == userid) {
+            recommendfeeds[i].isfollow = true
+          }
+        }
+        this.setData({
+          allfollow: recommendfeeds
+        })
+      }
+
+
     }
   },
 
@@ -43,7 +62,9 @@ Page({
     console.log(res)
     console.log(from)
     if (res.data.isok == true) {
-      if (from == "recommend") {
+      console.log("in func disfollowusercallback")
+
+      if (from == "recommand") {
         var recommendfeeds = this.data.recommendfeeds
         for (var i = 0; i < recommendfeeds.length; i++) {
           if (recommendfeeds[i].userid == userid) {
@@ -54,6 +75,19 @@ Page({
           recommendfeeds: recommendfeeds
         })
       }
+
+      if (from == "allfollow") {
+        var recommendfeeds = this.data.allfollow
+        for (var i = 0; i < recommendfeeds.length; i++) {
+          if (recommendfeeds[i].userid == userid) {
+            recommendfeeds[i].isfollow = false
+          }
+        }
+        this.setData({
+          allfollow: recommendfeeds
+        })
+      }
+
     }
   },
 
@@ -61,18 +95,17 @@ Page({
 
 
   followuser: function(e) {
-
     var userid = e.target.dataset.userid
-    feedutil.follow(userid, "recommend", this.followusercallback)
+    var from = e.target.dataset.from
+    feedutil.follow(userid, from, this.followusercallback)
   },
 
 
 
   disfollowuser: function(e) {
-
     var userid = e.target.dataset.userid
-
-    feedutil.disfollow(userid, "recommend", this.disfollowusercallback)
+    var from = e.target.dataset.from
+    feedutil.disfollow(userid, from, this.disfollowusercallback)
   },
 
 
@@ -178,6 +211,18 @@ Page({
         recommendfeeds: temp
       })
     }
+    if (from == "allfollow") {
+      var temp = that.data.allfollow
+      console.log(temp)
+      temp[index].isliked = true
+      temp[index].likecount = temp[index].likecount + 1
+
+      that.setData({
+        allfollow: temp
+      })
+    }
+
+
   },
   //dis喜欢feed 函数回调
   dislikefeedcallback: function(res, from, index) {
@@ -195,6 +240,20 @@ Page({
         recommendfeeds: temp
       })
     }
+
+    if (from == "allfollow") {
+
+      var temp = that.data.allfollow
+      console.log(temp)
+
+      temp[index].isliked = false
+      temp[index].likecount = temp[index].likecount - 1
+
+      that.setData({
+        allfollow: temp
+      })
+    }
+
   },
 
 
@@ -206,6 +265,9 @@ Page({
     var from = e.target.dataset.from
 
     var feeds = this.data.recommendfeeds
+    if (from == "allfollow") {
+      feeds = this.data.allfollow
+    }
     var status = feeds[index]["isliked"]
 
 
@@ -234,6 +296,8 @@ Page({
       }
     })
   },
+
+  //转发回调
   forwardthisfeedcallback: function(res, from, index) {
     console.log(res)
     var that = this
@@ -249,6 +313,20 @@ Page({
         recommendfeeds: temp
       })
     }
+
+
+    if (from == "allfollow") {
+
+      var temp = that.data.allfollow
+      console.log(temp)
+
+      temp[index].isforward = true
+      that.setData({
+        allfollow: temp
+      })
+    }
+
+
   },
 
   disforwardthisfeedcallback: function(res, from, index) {
@@ -264,6 +342,19 @@ Page({
         recommendfeeds: temp
       })
     }
+
+    if (from == "allfollow") {
+
+      var temp = that.data.allfollow
+      console.log(temp)
+
+      temp[index].isforward = false
+      that.setData({
+        allfollow: temp
+      })
+    }
+
+
   },
 
   forwardthisfeed: function(e) {
@@ -273,21 +364,26 @@ Page({
     var index = e.target.dataset.index
     var id = e.target.dataset.id
     var from = e.target.dataset.from
-
-    if (from == "recommand") {
-      if (this.data.recommendfeeds[index].isforward == false) {
-        if (wx.getStorageSync("userid") == this.data.recommendfeeds[index].userid) {
-          Toast('不能转发自己的分享');
-          // console.log("不能转发自己的")
-        } else {
-          feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
-          Toast('分享成功');
-        }
-      } else {
-        feedutil.disforwardfeed(id, index, from, this.disforwardthisfeedcallback)
-        Toast('已取消分享');
-      }
+    var feeds = this.data.recommendfeeds
+    if (from == "allfollow") {
+      feeds = this.data.allfollow
     }
+
+
+    if (feeds[index].isforward == false) {
+      if (wx.getStorageSync("userid") == feeds[index].userid) {
+        Toast('不能转发自己的分享');
+        // console.log("不能转发自己的")
+      } else {
+        feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
+        Toast('分享成功');
+      }
+    } else {
+      feedutil.disforwardfeed(id, index, from, this.disforwardthisfeedcallback)
+      Toast('已取消分享');
+    }
+
+
   },
 
   getallfollow: function() {
@@ -433,6 +529,23 @@ Page({
     wx.showNavigationBarLoading()
     this.getrecommendfeed()
 
+    if (this.data.tabname == "关注") {
+      var that = this
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            that.setData({
+              loginbtn: false
+            })
+          }
+          if (that.data.loginbtn == false) {
+            console.log("getallfollow")
+            that.getallfollow()
+          }
+
+        }
+      })
+    }
 
   },
 

@@ -73,8 +73,6 @@ App({
                   }
                 }
               })
-
-
             } else {
               wx.navigateTo({
                 url: '/pages/error/error?errmsg=登录失败',

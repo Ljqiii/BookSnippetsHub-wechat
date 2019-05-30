@@ -1,2 +1,15 @@
-<!--pages/followlist/followlist.wxml-->
-<text>pages/followlist/followlist.wxml</text>
+<view wx:for="{{followlist}}">
+  <view class='border'>
+    <van-row>
+      <van-col span="4">
+        <image style='margin-left:30rpx' class='image_css' src="{{item.AvatarUrl}}" mode="aspectFit" data-notiid='{{index}}'></image>
+      </van-col>
+      <van-col span="20">
+        <view style='height:85rpx;margin-top: 10rpx;margin-left: 25rpx;'>
+          <text style='line-height:85rpx'>{{item.nickname}}</text>
+        </view>
+      </van-col>
+    </van-row>
+    <view style='height:8rpx'></view>
+  </view>
+</view>

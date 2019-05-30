@@ -1,7 +1,7 @@
 <view wx:if="{{!loginbtn}}">
 
   <view wx:if="{{allfollow.length!=0}}">
-    <view wx:for="{{allfollow}}" data-id='{{item.id}}' data-index='{{index}}'>
+    <view wx:for="{{allfollow}}" wx:key="{{item.id}}" data-id='{{item.id}}' data-index='{{index}}'>
       <include src="/pages/item.wxml" />
     </view>
     <view style='text-align:center;margin-bottom:100rpx;margin-top:20rpx;color:#e2e9ee'>

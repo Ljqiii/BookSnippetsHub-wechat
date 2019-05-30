@@ -58,6 +58,7 @@
 
 
   <view style="position: fixed;right:275rpx;bottom: 8rpx;">
+  
   <van-button round type="danger" bindtap='send'>
     <image src='/img/fabu.png' bindtap='send' style='width:45rpx;height:45rpx;vertical-align:middle;'></image>
     <text style='font-size:35rpx;vertical-align:middle;'>发布</text>

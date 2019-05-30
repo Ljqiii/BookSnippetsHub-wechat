@@ -1,5 +1,5 @@
 <view wx:if="{{recommendfeeds}}">
-  <view wx:for="{{recommendfeeds}}" data-id='{{item.id}}' data-index='{{index}}'>
+  <view wx:for="{{recommendfeeds}}" wx:key="{{item.id}}" data-id='{{item.id}}' data-index='{{index}}'>
     <include src="/pages/item.wxml" />
   </view>
   <!-- <view style='text-align:center;margin-bottom:100rpx;margin-top:20rpx;color:#e2e9ee'>

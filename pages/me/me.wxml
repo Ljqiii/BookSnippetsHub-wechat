@@ -15,8 +15,8 @@
 
   <van-row>
     <van-col span="7" style="text-align:center">
-      <view class="text-grey">分享</view>
-      <view class="text-black">{{feed}}</view>
+      <view class="text-grey" catchtap='navigateTouserfeedmyshare'>分享</view>
+      <view class="text-black" catchtap='navigateTouserfeedmyshare'>{{feed}}</view>
     </van-col>
     <van-col span="1" class="line-y-left">
       |
@@ -34,7 +34,8 @@
     </van-col>
   </van-row>
 
-  <van-cell icon="star" title="我的收藏" is-link  url="/pages/userfeed/userfeed"  link-type="navigateTo" />
+  <!-- <van-cell icon="star" title="我的收藏" is-link  url="/pages/userfeed/userfeed"  link-type="navigateTo" /> -->
+  <van-cell icon="star" title="我的收藏" is-link  catchtap="navigateTouserfeedmycollection" />
 
 </view>
 <view wx:else style='text-align:center;margin-bottom:20rpx' class="div167">

@@ -1,12 +1,13 @@
 // pages/followlist/followlist.js
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
 
     baseurl: "",
+    followlist:[]
   },
 
   /**
@@ -14,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     console.log("onload")
-
+    var that=this
     this.setData({
       baseurl: app.globalData.baseurl
     })
@@ -25,6 +26,9 @@ Page({
       },
       success: function (res) {
         console.log(res)
+        that.setData({
+          followlist: res.data
+        })
       }
     })
   },

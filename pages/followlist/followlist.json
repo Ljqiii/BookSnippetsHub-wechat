@@ -1,3 +1,15 @@
 {
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#1D82FE",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "关注",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "van-loading": "/vant/loading/index",
+    "slide-delete": "../../components/slide-delete/index",
+    "van-popup": "/vant/popup/index",
+    "vant-button": "/vant/button/index",
+    "van-row": "/vant/row/index",
+    "van-col": "/vant/col/index",
+    "van-toast": "/vant/toast/index"
+  }
 }
