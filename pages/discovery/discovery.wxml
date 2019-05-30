@@ -1,18 +1,17 @@
-<view style='height:10rpx'></view>
+<!-- <include src="recommend.wxml" /> -->
 
-
-<include src="recommend.wxml" />
-
-<!-- <van-tabs active="0" bind:change="onChange" animated>
+<van-tabs active="0" bind:change="onChange" animated>
   <van-tab title="推荐">
+    <view style='height:10rpx'></view>
     <include src="recommend.wxml" />
   </van-tab>
 
   <van-tab title="关注">
+    <view style='height:10rpx'></view>
     <include src="myfollow.wxml" />
   </van-tab>
 
-</van-tabs> -->
+</van-tabs>
 
 <van-toast id="van-toast" />
 

@@ -22,15 +22,15 @@
       |
     </van-col>
     <van-col span="8" style="text-align:center">
-      <view class="text-grey">关注</view>
-      <view class="text-black">{{follow}}</view>
+      <view class="text-grey" catchtap='navigatetofollowlist'>关注</view>
+      <view class="text-black" catchtap='navigatetofollowlist'>{{follow}}</view>
     </van-col>
     <van-col span="1">
       |
     </van-col>
     <van-col span="7" style="text-align:center">
-      <view class="text-grey">粉丝</view>
-      <view class="text-black">{{followerscount}}</view>
+      <view class="text-grey" catchtap='navigatetofollowerlist'>粉丝</view>
+      <view class="text-black" catchtap='navigatetofollowerlist'>{{followerscount}}</view>
     </van-col>
   </van-row>
 

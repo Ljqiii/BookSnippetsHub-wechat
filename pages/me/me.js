@@ -56,11 +56,20 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
+  navigatetofollowlist: function () {
+    console.log("in navigatetofollowlist")
+    wx.navigateTo({
+      url: '/pages/followlist/followlist'
+    })
+  },
+  navigatetofollowerlist: function () {
+    console.log("in navigatetofollowerlist")
+    wx.navigateTo({
+      url: '/pages/followerlist/followerlist'
+    })
+  },
 
+  onShow: function() {
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -81,6 +90,24 @@ Page({
         }
       }
     })
+
+    var that = this
+    if (wx.getStorageSync("hasuserinfo") == true) {
+      wx.request({
+        url: app.globalData.baseurl + "/me",
+        method: "GET",
+        success: function (res) {
+          that.setData({
+            followerscount: res.data["followerscount"],
+            follow: res.data["followcount"],
+            feed: res.data["feed"]
+          })
+        },
+        header: {
+          Authorization: wx.getStorageSync("token")
+        }
+      })
+    }
 
   },
 

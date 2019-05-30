@@ -40,7 +40,7 @@ const likefeed = function(id, index, from, func) {
   })
 }
 
-const forwardfeed = function (id, index, from, func) {
+const forwardfeed = function(id, index, from, func) {
   var that = this
   console.log("in function forwardfeed")
   wx.request({
@@ -62,7 +62,7 @@ const forwardfeed = function (id, index, from, func) {
 }
 
 
-const disforwardfeed = function (id, index, from, func) {
+const disforwardfeed = function(id, index, from, func) {
   var that = this
   console.log("in function forwardfeed")
   wx.request({
@@ -84,14 +84,55 @@ const disforwardfeed = function (id, index, from, func) {
 }
 
 
+//follow util
 
+const follow = function(userid, from, func) {
+  var that = this
+  console.log("in function follow")
+  wx.request({
+    url: app.globalData.baseurl + '/follow',
+    method: "POST",
+    header: {
+      Authorization: wx.getStorageSync("token")
+    },
+    data: {
+      userid: userid
+    },
+    success: res => {
+      console.log(res)
+      func(res, from, userid)
+    }
+  })
+}
+
+
+
+
+const disfollow = function(userid, from, func) {
+  var that = this
+  console.log("in function follow")
+  wx.request({
+    url: app.globalData.baseurl + '/disfollow',
+    method: "POST",
+    header: {
+      Authorization: wx.getStorageSync("token")
+    },
+    data: {
+      userid: userid
+    },
+    success: res => {
+      console.log(res)
+      func(res, from, userid)
+    }
+  })
+}
 
 
 module.exports = {
   dislikefeed: dislikefeed,
   likefeed: likefeed,
   forwardfeed: forwardfeed,
-  disforwardfeed: disforwardfeed
-  // disforwardfeed: disforwardfeed
-
+  disforwardfeed: disforwardfeed,
+  follow: follow,
+  disfollow: disfollow
 }

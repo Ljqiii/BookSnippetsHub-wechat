@@ -14,7 +14,9 @@
     "pages/userfeed/userfeed",
     "pages/feedcomment/feedcomment",
     "pages/login/login",
-    "pages/mylikefeed/mylikefeed"
+    "pages/mylikefeed/mylikefeed",
+    "pages/followlist/followlist",
+    "pages/followerlist/followerlist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +25,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color":"black",
+    "color": "black",
     "list": [
       {
         "pagePath": "pages/discovery/discovery",

@@ -4,35 +4,34 @@
     <image src='{{item.avatarUrl}}' style='border-radius: 100%;height:80rpx;width:80rpx;margin-left:20rpx;margin-top:5rpx'></image>
   </van-col>
   <van-col span="1"></van-col>
-  <van-col span="16">
+  <van-col span="14">
     <van-row>
       <text style="font-size:25rpx;line-height:0rpx">{{item.nickname}}</text>
-
     </van-row>
     <van-row>
       <text style="color:#ddd;font-size:23rpx">{{item.time}}</text>
     </van-row>
+  </van-col>
+  <van-col span="2">
+
+    <!-- <view style='height:19rpx'></view>
+    <vant-button style='margin-left:18rpx' type="default" size="small" wx:if="{{item.isfollow}}" data-userid='{{item.userid}}' catchtap='disfollowuser' data-index="{{index}}">已关注</vant-button>
+    <vant-button style='margin-left:18rpx' type="default" size="small" wx:else data-userid='{{item.userid}}' catchtap='followuser' data-index="{{index}}">关注</vant-button> -->
+
+    <view wx:if="{{item.isfollow}}" style='line-height:60rpx'>
+      <image src='/img/disfollow.png' data-userid='{{item.userid}}' catchtap='disfollowuser' style='margin-left:28rpx;margin-top:20rpx;width:60rpx;height:60rpx;' mode='aspectFit'></image>
+    </view>
+
+    <view wx:else>
+      <image src='/img/follow.png' data-userid='{{item.userid}}' catchtap='followuser' style='margin-left:28rpx;margin-top:20rpx;width:60rpx;height:60rpx;' mode='aspectFit'></image>
+    </view>
 
   </van-col>
-  <!-- <van-col span="4">
-
-    <vant-button type="default" wx:if="{{item.userid==userid && displayfollowbtn && !item.isfollow}}" catchtap='follow' data-userid='{{item.userid}}'>关注</vant-button>
-    <vant-button disabled type="default" wx:if="{{item.isfollow && displayfollowbtn}}" catchtap='disfollow' data-userid='{{item.userid}}'>已关注</vant-button>
-   
-  </van-col> -->
-
 
 </van-row>
 
 
-<!-- <view class="{{isFolded?'conts':'conts1'}}" bindtap='change' style="background: url('{{baseurl}}{{item.backgroundmageurl}}');padding-left:30rpx;padding-right:30rpx;"> -->
-
-<view class="{{item.isFolded?'folded':'notfolded'}}"  data-index="{{index}}" catchtap='changefolded' style="background: url('{{baseurl}}{{item.backgroundmageurl}}');padding-left:30rpx;padding-right:30rpx;">
-
-  <!-- feed content -->
-
-  <!-- <image src='{{baseurl}}{{item.backgroundmageurl}}' style='height:70rpx;width:70rpx' mode="aspectFill"> </image> -->
-
+<view class="{{item.isFolded?'folded':'notfolded'}}" data-index="{{index}}" catchtap='changefolded' style="background: url('{{baseurl}}{{item.backgroundmageurl}}');padding-left:30rpx;padding-right:30rpx;">
 
   <view style='text-align:center;margin-top:10rpx'>
     <text style="font-size:40rpx;padding-right:20rpx">『</text>
@@ -42,31 +41,28 @@
 
 
   <view data-index="{{index}}">
-    <text style="font-size:50rpx"  data-index="{{index}}">"</text>
+    <text style="font-size:50rpx" data-index="{{index}}">"</text>
   </view>
   <view data-index="{{index}}">
     <text style='padding-left:40rpx' data-index="{{index}}"></text>
-    <text  data-index="{{index}}">{{item.bookcontent}}</text>
+    <text data-index="{{index}}">{{item.bookcontent}}</text>
   </view>
   <view style="text-align:right" data-index="{{index}}">
-    <text style="font-size:50rpx;text-align:right"  data-index="{{index}}">"</text>
+    <text style="font-size:50rpx;text-align:right" data-index="{{index}}">"</text>
   </view>
   <view style="text-align:center;margin-bottom:20rpx" data-index="{{index}}">
-    <image src='/img/dengpao.png' style='width:40rpx;height:40rpx;vertical-align:middle'  data-index="{{index}}"></image>
-    <text style='vertical-align:middle;font-size:25rpx'  data-index="{{index}}">一点想法</text>
+    <image src='/img/dengpao.png' style='width:40rpx;height:40rpx;vertical-align:middle' data-index="{{index}}"></image>
+    <text style='vertical-align:middle;font-size:25rpx' data-index="{{index}}">一点想法</text>
   </view>
   <view data-index="{{index}}">
     <text style='padding-left:40rpx' data-index="{{index}}"></text>
-    <text  data-index="{{index}}">{{item.bookcomment}}</text>
+    <text data-index="{{index}}">{{item.bookcomment}}</text>
   </view>
   <view style="text-align:center;margin-bottom:40rpx;margin-top:20rpx" data-index="{{index}}">
-    <text style='font-size:18rpx;color: #cccccc;'  data-index="{{index}}">{{item.time}}</text>
+    <text style='font-size:18rpx;color: #cccccc;' data-index="{{index}}">{{item.time}}</text>
   </view>
 </view>
 
-
-<!-- options  -->
-<!-- <view style='height:60rpx;width:781rpx;padding-top:10rpx;box-shadow:0px -25rpx 25rpx -16rpx #c9c9c9;'> -->
 <view style='height:60rpx;width:750rpx;padding-top:10rpx;box-shadow:0px -25rpx 25rpx -16rpx #c9c9c9;'>
 
   <van-row style="text-align:center;background-color:#E2E9EE;height:50rpx;box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;" class="optionsbar">
@@ -86,10 +82,6 @@
       <image wx:if="{{item.isforward!=true}}" src='/img/forward.png' mode="aspectFit" style='height:35rpx;width:35rpx;vertical-align:middle' data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}"></image>
       <image wx:else src='/img/forwardfill.png' mode="aspectFit" style='height:35rpx;width:35rpx;vertical-align:middle' data-id="{{item.id}}" data-index="{{index}}" data-from="{{item.from}}"></image>
     </van-col>
-
-    <!-- <van-col span="1" >
-    </van-col> -->
-
   </van-row>
 </view>
 

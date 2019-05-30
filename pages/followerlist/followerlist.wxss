@@ -1,0 +1,24 @@
+/* pages/followerlist/followerlist.wxss */
+.image_css {
+  margin-top: 10rpx;
+  width: 85rpx;
+  height: 85rpx;
+  vertical-align: middle;
+  border-radius: 100%;
+}
+.text_css {
+  width: 600rpx;
+  margin-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0rpx;
+}
+.name_fa {
+  font-size: 25rpx;
+  color: black;
+  margin-top: 5rpx;
+}
+
+.border{
+  border: 1px solid #e8e8e8;
+}

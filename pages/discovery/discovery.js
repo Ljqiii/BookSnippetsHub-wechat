@@ -12,12 +12,67 @@ Page({
     isFolded: true,
     loginbtn: true,
     baseurl: "",
-    alllikebook: [],
-
+    allfollow: [],
     allrecommendfeedsid: [],
     recommendfeeds: [],
     displayfollowbtn: true,
-    userid: -1
+    userid: -1,
+    tabname: "recommend"
+  },
+
+
+  followusercallback: function(res, from, userid) {
+    console.log(res)
+    console.log(from)
+    if (res.data.isok == true) {
+      if (from == "recommend") {
+        var recommendfeeds = this.data.recommendfeeds
+        for (var i = 0; i < recommendfeeds.length; i++) {
+          if (recommendfeeds[i].userid == userid) {
+            recommendfeeds[i].isfollow = true
+          }
+        }
+        this.setData({
+          recommendfeeds: recommendfeeds
+        })
+      }
+    }
+  },
+
+  disfollowusercallback: function(res, from, userid) {
+    console.log(res)
+    console.log(from)
+    if (res.data.isok == true) {
+      if (from == "recommend") {
+        var recommendfeeds = this.data.recommendfeeds
+        for (var i = 0; i < recommendfeeds.length; i++) {
+          if (recommendfeeds[i].userid == userid) {
+            recommendfeeds[i].isfollow = false
+          }
+        }
+        this.setData({
+          recommendfeeds: recommendfeeds
+        })
+      }
+    }
+  },
+
+
+
+
+  followuser: function(e) {
+
+    var userid = e.target.dataset.userid
+    feedutil.follow(userid, "recommend", this.followusercallback)
+  },
+
+
+
+  disfollowuser: function(e) {
+
+    var userid = e.target.dataset.userid
+
+    feedutil.disfollow(userid, "recommend", this.disfollowusercallback)
   },
 
 
@@ -86,20 +141,28 @@ Page({
 
   onChange: function(e) {
     var tab = e.detail.title
-    console.log(tab)
+    this.setData({
+      tabname: tab
+    })
+
     if (tab == "关注") {
       var that = this
       wx.getSetting({
         success: res => {
-
           if (res.authSetting['scope.userInfo']) {
             that.setData({
               loginbtn: false
             })
           }
+          if (that.data.loginbtn == false) {
+            console.log("getallfollow")
+            that.getallfollow()
+          }
+
         }
       })
     }
+
   },
 
   //喜欢feed 函数回调
@@ -171,7 +234,7 @@ Page({
       }
     })
   },
-  forwardthisfeedcallback: function (res, from, index) {
+  forwardthisfeedcallback: function(res, from, index) {
     console.log(res)
     var that = this
 
@@ -188,7 +251,7 @@ Page({
     }
   },
 
-  disforwardthisfeedcallback: function (res, from, index) {
+  disforwardthisfeedcallback: function(res, from, index) {
     console.log(res)
     var that = this
     if (from == "recommand") {
@@ -220,13 +283,29 @@ Page({
           feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
           Toast('分享成功');
         }
-      }
-     else{
+      } else {
         feedutil.disforwardfeed(id, index, from, this.disforwardthisfeedcallback)
         Toast('已取消分享');
-     } 
+      }
     }
   },
+
+  getallfollow: function() {
+    var that = this
+    wx.request({
+      url: app.globalData.baseurl + '/getfollowuserfeed',
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          allfollow: res.data
+        })
+      }
+    })
+  },
+
 
   getrecommendfeed: function() {
     console.log("in func getrecommendfeed")
@@ -243,7 +322,6 @@ Page({
       },
       success: function(res) {
         if (res.data == "TokenExpiredException") {
-
           that.getrecommendfeed()
         }
         console.log(res)

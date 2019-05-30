@@ -1,7 +1,7 @@
 <view wx:if="{{!loginbtn}}">
 
-  <view wx:if="{{alllikebook.length!=0}}">
-    <view wx:for="{{alllikebook}}" data-id='{{item.id}}' data-index='{{index}}'>
+  <view wx:if="{{allfollow.length!=0}}">
+    <view wx:for="{{allfollow}}" data-id='{{item.id}}' data-index='{{index}}'>
       <include src="/pages/item.wxml" />
     </view>
     <view style='text-align:center;margin-bottom:100rpx;margin-top:20rpx;color:#e2e9ee'>
@@ -15,11 +15,11 @@
     </view>
 
     <view style='color:#e2e9ee'>
-      <text>您没有关注的书</text>
+      <text>您没有关注的人</text>
     </view>
 
     <view style='color:#e2e9ee'>
-      <text>关注的书籍的分享会显示在这</text>
+      <text>关注的人的分享会显示在这</text>
     </view>
 
   </view>
