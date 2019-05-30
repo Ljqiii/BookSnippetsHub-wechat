@@ -1,15 +1,30 @@
-<view wx:for="{{followerlist}}">
-  <view class='border'>
-    <van-row>
-      <van-col span="4">
-        <image style='margin-left:30rpx' class='image_css' src="{{item.AvatarUrl}}" mode="aspectFit" data-notiid='{{index}}'></image>
-      </van-col>
-      <van-col span="20">
-        <view style='height:85rpx;margin-top: 10rpx;margin-left: 25rpx;'>
-          <text style='line-height:85rpx'>{{item.nickname}}</text>
-        </view>
-      </van-col>
-    </van-row>
-    <view style='height:8rpx'></view>
+<view wx:if="{{followerlist.length!=0}}">
+  <view wx:for="{{followerlist}}">
+    <view class='border'>
+      <van-row>
+        <van-col span="4">
+          <image style='margin-left:30rpx' class='image_css' src="{{item.AvatarUrl}}" mode="aspectFit" data-notiid='{{index}}'></image>
+        </van-col>
+        <van-col span="20">
+          <view style='height:85rpx;margin-top: 10rpx;margin-left: 25rpx;'>
+            <text style='line-height:85rpx'>{{item.nickname}}</text>
+          </view>
+        </van-col>
+      </van-row>
+      <view style='height:8rpx'></view>
+    </view>
   </view>
+</view>
+
+<view wx:else style='text-align:center'>
+  <view style='margin-top:350rpx'>
+    <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
+  </view>
+
+  <view style='color:#e2e9ee'>
+    <text>您没有粉丝</text>
+  </view>
+
+
+
 </view>

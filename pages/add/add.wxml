@@ -1,68 +1,74 @@
-<!-- <image mode="aspectFill" style='z-index:-100;position: fixed;left: 0rpx;top:0px;width:750rpx' src='{{bgimgurl}}'>
-</image> -->
-
-<view style="background: url('{{bgimgurl}}'); min-height:800rpx">
-
-
-  <view style='text-align:center;padding-top:20rpx'>
-
-    <van-row>
-      <van-col span="8" style='text-align:right'>
-        <text style="font-size:50rpx;padding-right:20rpx">『</text>
-      </van-col>
-      <van-col span="8">
-        <input style="text-align:center;margin-top:20rpx" placeholder="书名" confirm-type="next" bindinput='inputbookname'></input>
-      </van-col>
-      <van-col span="8" style='text-align:left'>
-        <text style="font-size:50rpx;padding-left:20rpx">』</text>
-      </van-col>
-    </van-row>
-    <view style='height:1px;background-color:#e8e8e8;'></view>
-
-    <view style='text-align:left'>
-      <text style="font-size:60rpx;">"</text>
-    </view>
-    <view style='text-align:center'>
-      <textarea style='width:750rpx' rows="6" auto-height="true" placeholder="书内容" confirm-type="next" bindinput='inputbookcontent'></textarea>
-    </view>
-    <view style="text-align:right">
-      <text style="font-size:60rpx;text-align:right">"</text>
-    </view>
-    <view style='height:1px;background-color:#e8e8e8;'></view>
-    <view style='text-align:center'>
-      <textarea style='width:750rpx' rows="6" auto-height="true" placeholder="写一点想法吧" confirm-type="done" bindinput='inputbookcomment'></textarea>
-    </view>
-  </view>
+<view wx:if="{{isloading}}">
+  <include src="/pages/loading.wxml" />
 </view>
 
-<view class='bottom'>
+<view wx:else>
 
-  <view style='border-bottom:1px solid #e8e8e8;margin-bottom:10rpx;width:750rpx'>
-    <image src='/img/bgtext.png' style='height:30rpx;width:30rpx;vertical-align:middle;' mode='aspectFill'></image>
-    <text style='font-size:30rpx;vertical-align:middle;'>选择主题</text>
-  </view>
+  <view wx:if="{{!loginbtn}}">
 
-  <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
-    <view wx:for="{{backgroundimages}}" class='scroll-x-item'>
-      <view>
-        <image src='{{baseurl}}{{item.uri}}' style="width:100rpx;height:100rpx" mode="aspectFill" data-imgid='{{item.id}}' data-imguri='{{baseurl}}{{item.uri}}' bindtap='setbgimgid'>
-        </image>
+    <view style="background: url('{{bgimgurl}}'); min-height:750rpx">
+      <view style='text-align:center;padding-top:20rpx'>
+        <van-row>
+          <van-col span="8" style='text-align:right'>
+            <text style="font-size:50rpx;padding-right:20rpx">『</text>
+          </van-col>
+          <van-col span="8">
+            <input style="text-align:center;margin-top:20rpx" value='{{bookname}}' placeholder="书名" confirm-type="next" bindinput='inputbookname'></input>
+          </van-col>
+          <van-col span="8" style='text-align:left'>
+            <text style="font-size:50rpx;padding-left:20rpx">』</text>
+          </van-col>
+        </van-row>
+        <view style='height:1px;background-color:#e8e8e8;'></view>
+
+        <view style='text-align:left'>
+          <text style="font-size:60rpx;">"</text>
+        </view>
+        <view style='text-align:center'>
+          <textarea style='width:750rpx' rows="6" auto-height="true" value='{{bookcontent}}' placeholder="书内容" confirm-type="next" bindinput='inputbookcontent'></textarea>
+        </view>
+        <view style="text-align:right">
+          <text style="font-size:60rpx;text-align:right">"</text>
+        </view>
+        <view style='height:1px;background-color:#e8e8e8;'></view>
+        <view style='text-align:center'>
+          <textarea style='width:750rpx' rows="6" auto-height="true" value='{{bookcomment}}' placeholder="写一点想法吧" confirm-type="done" bindinput='inputbookcomment'></textarea>
+        </view>
       </view>
-      <!-- <text style="font-size:20rpx">{{item.name}}</text> -->
     </view>
-  </scroll-view>
-
-  <view style='border-bottom:1px solid #e8e8e8;width:750rpx'> </view>
-</view>
 
 
 
-  <view style="position: fixed;right:275rpx;bottom: 8rpx;">
-  
-  <van-button round type="danger" bindtap='send'>
-    <image src='/img/fabu.png' bindtap='send' style='width:45rpx;height:45rpx;vertical-align:middle;'></image>
-    <text style='font-size:35rpx;vertical-align:middle;'>发布</text>
-  </van-button>
+    <view class='bottom'>
 
+      <view style='border-bottom:1px solid #e8e8e8;margin-bottom:10rpx;width:750rpx' class="bottom-text">
+        <image src='/img/bgtext.png' style='height:30rpx;width:30rpx;vertical-align:middle;' mode='aspectFill'></image>
+        <text style='font-size:30rpx;vertical-align:middle;'>选择主题</text>
+      </view>
+      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='bottom'>
+        <view wx:for="{{backgroundimages}}" class='scroll-x-item'>
+          <view>
+            <image src='{{baseurl}}{{item.uri}}' mode="aspectFill" data-imgid='{{item.id}}' data-imguri='{{baseurl}}{{item.uri}}' bindtap='setbgimgid'>
+            </image>
+          </view>
+        </view>
+      </scroll-view>
+      <view style='border-bottom:1px solid #e8e8e8;width:750rpx'> </view>
+    </view>
+
+    <view style="position: fixed;right:275rpx;bottom: 8rpx;">
+
+      <van-button round type="danger" bindtap='send'>
+        <image src='/img/fabu.png' bindtap='send' style='width:45rpx;height:45rpx;vertical-align:middle;'></image>
+        <text style='font-size:35rpx;vertical-align:middle;'>发布</text>
+      </van-button>
+
+
+    </view>
+  </view>
+  <view wx:else>
+    <include src="/pages/login.wxml" />
+
+  </view>
 
 </view>

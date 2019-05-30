@@ -31,3 +31,6 @@
   border-bottom: 1px solid #f1f1f1;
    color: #aaaaaa;
 }
+.displaynone{
+  display: none;
+}

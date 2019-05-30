@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title:"",
     baseurl: "",
     from: "",
     allmylikefeed: [],
@@ -18,17 +19,16 @@ Page({
   },
 
   onLoad: function(options) {
-
-
     this.setData({
       baseurl: app.globalData.baseurl
     })
 
-
-
     console.log(options)
 
     wx.setNavigationBarTitle({
+      title: options.title
+    })
+    this.setData({
       title: options.title
     })
 
@@ -44,20 +44,6 @@ Page({
       this.getallmysharefeed()
     }
 
-
-    if (options.userid == wx.getStorageSync("userid")) {
-
-
-
-      this.getallmylikefeed()
-    } else {
-      this.setData({
-        from: "other",
-        userid: options.userid
-      })
-
-      ////======
-    }
   },
   getallmysharefeed: function() {
     var that = this
@@ -67,8 +53,11 @@ Page({
         Authorization: wx.getStorageSync("token")
       },
       success: function(res) {
+        wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
         console.log(res)
         that.setData({
+
           allmylikefeed: that.data.allmylikefeed.concat(res.data)
         })
       }
@@ -89,6 +78,8 @@ Page({
         Authorization: wx.getStorageSync("token")
       },
       success: function(res) {
+        wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
         console.log(res)
         that.setData({
           allmylikefeed: that.data.allmylikefeed.concat(res.data)
@@ -187,31 +178,31 @@ Page({
     var that = this
 
 
-   
 
-      var temp = that.data.allmylikefeed
-      console.log(temp)
 
-      temp[index].isforward = true
-      that.setData({
-        allmylikefeed: temp
-      })
- 
+    var temp = that.data.allmylikefeed
+    console.log(temp)
+
+    temp[index].isforward = true
+    that.setData({
+      allmylikefeed: temp
+    })
+
   },
 
   disforwardthisfeedcallback: function(res, from, index) {
     console.log(res)
     var that = this
-   
 
-      var temp = that.data.allmylikefeed
-      console.log(temp)
 
-      temp[index].isforward = false
-      that.setData({
-        allmylikefeed: temp
-      })
- 
+    var temp = that.data.allmylikefeed
+    console.log(temp)
+
+    temp[index].isforward = false
+    that.setData({
+      allmylikefeed: temp
+    })
+
   },
 
   forwardthisfeed: function(e) {
@@ -222,20 +213,20 @@ Page({
     var id = e.target.dataset.id
     var from = e.target.dataset.from
 
-  
+
     if (this.data.allmylikefeed[index].isforward == false) {
-        if (wx.getStorageSync("userid") == this.data.allmylikefeed[index].userid) {
-          Toast('不能转发自己的分享');
-          // console.log("不能转发自己的")
-        } else {
-          feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
-          Toast('分享成功');
-        }
+      if (wx.getStorageSync("userid") == this.data.allmylikefeed[index].userid) {
+        Toast('不能转发自己的分享');
+        // console.log("不能转发自己的")
       } else {
-        feedutil.disforwardfeed(id, index, from, this.disforwardthisfeedcallback)
-        Toast('已取消分享');
+        feedutil.forwardfeed(id, index, from, this.forwardthisfeedcallback)
+        Toast('分享成功');
       }
-    
+    } else {
+      feedutil.disforwardfeed(id, index, from, this.disforwardthisfeedcallback)
+      Toast('已取消分享');
+    }
+
 
   },
 
@@ -266,6 +257,60 @@ Page({
 
   },
 
+
+
+  followusercallback: function (res, from, userid) {
+    console.log(res)
+    console.log(from)
+
+    if (res.data.isok == true) {
+      console.log("in func followusercallback")
+      console.log(from)
+
+      var recommendfeeds = this.data.allmylikefeed
+        for (var i = 0; i < recommendfeeds.length; i++) {
+          if (recommendfeeds[i].userid == userid) {
+            recommendfeeds[i].isfollow = true
+          }
+        }
+        this.setData({
+          allmylikefeed: recommendfeeds
+        })
+    }
+  },
+
+  disfollowusercallback: function (res, from, userid) {
+    console.log(res)
+    console.log(from)
+    if (res.data.isok == true) {
+      console.log("in func disfollowusercallback")
+
+
+      var recommendfeeds = this.data.allmylikefeed
+        for (var i = 0; i < recommendfeeds.length; i++) {
+          if (recommendfeeds[i].userid == userid) {
+            recommendfeeds[i].isfollow = false
+          }
+        }
+        this.setData({
+          allmylikefeed: recommendfeeds
+        })
+
+    }
+  },
+
+  followuser: function (e) {
+    var userid = e.target.dataset.userid
+    var from = e.target.dataset.from
+    feedutil.follow(userid, from, this.followusercallback)
+  },
+
+  disfollowuser: function (e) {
+    var userid = e.target.dataset.userid
+    var from = e.target.dataset.from
+    feedutil.disfollow(userid, from, this.disfollowusercallback)
+  },
+
   /**
    * 生命周期函数--监听页面卸载
    */
@@ -277,6 +322,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    this.setData({
+      allmylikefeed: [],
+      allmylikefeedid: []
+    })
+    wx.showNavigationBarLoading()
+    this.onLoad({ "title": this.data.title})
 
   },
 

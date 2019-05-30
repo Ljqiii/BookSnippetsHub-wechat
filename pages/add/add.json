@@ -5,6 +5,7 @@
   "usingComponents": {
     "van-row": "/vant/row/index",
     "van-col": "/vant/col/index",
+    "vant-button": "/vant/button/index",
     "van-button": "/vant/button/index"
   }
 }

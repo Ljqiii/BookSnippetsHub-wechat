@@ -3,7 +3,7 @@ userinfo
 
 </view> -->
 
-<view wx:if="{{allmylikefeed}}">
+<view wx:if="{{allmylikefeed.length!=0}}">
   <view wx:for="{{allmylikefeed}}" data-id='{{item.id}}' data-index='{{index}}'>
     <include src="/pages/item.wxml" />
   </view>
@@ -13,6 +13,8 @@ userinfo
   <view style='margin-top:350rpx'>
     <image src='/img/none.png' style='width:200rpx;height:200rpx'></image>
   </view>
-  <text>无内容</text>
+  <view style='color:#e2e9ee'>
+    <text>还没有分享过</text>
+  </view>
 </view>
 <van-toast id="van-toast" />

@@ -14,11 +14,11 @@
   </van-col>
   <van-col span="4">
 
-   <view style='margin-left:50rpx'>
+   <view style='margin-left:50rpx' class="displaynone">
       <view wx:if="{{item.isfollow}}">
 
-        <button style='margin-top:20rpx;;margin-left:18rpx;width:140rpx;height:50rpx;border-radius:1;background-color:#fff;padding-left:2rpx;padding-right:2rpx' data-userid='{{item.userid}}' catchtap='disfollowuser' data-from='{{item.from}}'>
-          <view style='margin-top:-17rpx'>
+        <button style='margin-top:20rpx;margin-left:18rpx;width:140rpx;height:50rpx;border-radius:1;background-color:#fff;padding-left:2rpx;padding-right:2rpx' data-userid='{{item.userid}}' catchtap='disfollowuser' data-from='{{item.from}}'>
+          <view style='margin-top:-20rpx'>
             <image src='/img/disfollow.png' data-userid='{{item.userid}}' data-from='{{item.from}}' catchtap='disfollowuser' style='width:27rpx;height:27rpx;vertical-align:middle' mode='aspectFit'></image>
             <text style='font-size:25rpx;vertical-align:middle;padding-left:5rpx' catchtap='disfollowuser' data-from='{{item.from}}'>已关注</text>
           </view>
@@ -29,7 +29,7 @@
       <view wx:else>
 
         <button style='margin-top:20rpx;;margin-left:18rpx;width:140rpx;height:50rpx;border-radius:1;background-color:#fff;padding-left:2rpx;padding-right:2rpx' data-userid='{{item.userid}}'   data-from='{{item.from}}'catchtap='followuser'>
-          <view style='margin-top:-17rpx'>
+          <view style='margin-top:-20rpx'>
             <image src='/img/follow.png' data-userid='{{item.userid}}' catchtap='followuser' data-from='{{item.from}}' style='width:27rpx;height:27rpx;vertical-align:middle' mode='aspectFit'></image>
             <text style='font-size:25rpx;vertical-align:middle;padding-left:5rpx' catchtap='followuser' data-from='{{item.from}}'>关注</text>
           </view>

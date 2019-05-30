@@ -10,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isloading: true,
+    loginbtn: true,
     bookname: "",
     bookcontent: "",
     bookcomment: "",
@@ -27,6 +29,23 @@ Page({
     this.setData({
       baseurl: app.globalData.baseurl
     })
+    var that = this
+    setTimeout(function() {
+      that.setData({
+        isloading: false
+      })
+    }, 400)
+
+
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          that.setData({
+            loginbtn: false
+          })
+        }
+      }
+    })
 
 
     wx.pro.request({
@@ -41,6 +60,38 @@ Page({
       } else {}
     })
   },
+
+
+
+  getUserInfo: function(e) {
+    app.globalData.userInfo = e.detail.userInfo
+
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+    var that = this
+
+    wx.request({
+      url: app.globalData.baseurl + "/auth/uploadWxUserinfo",
+      method: "POST",
+      header: {
+        Authorization: wx.getStorageSync("token")
+      },
+      data: {
+        userinfo: e.detail.userInfo
+      },
+      success: res => {
+        that.setData({
+          loginbtn: false
+        })
+        wx.setStorageSync("hasuserinfo", true)
+      }
+    })
+  },
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -90,6 +141,12 @@ Page({
   onShareAppMessage: function() {
 
   },
+  navigateTouserfeedmyshare: function() {
+    wx.navigateTo({
+      url: '/pages/userfeed/userfeed?title=我的分享',
+    })
+  },
+
 
   inputbookname: function(e) {
     this.setData({
@@ -127,7 +184,7 @@ Page({
       if (this.data.bookname == '' && this.data.bookcontent == '') {
         toast = '请填写书名和内容'
       }
-
+      var that = this
 
       wx.showToast({
         title: toast,
@@ -159,10 +216,13 @@ Page({
                 icon: 'success',
                 duration: 2000,
                 success: function() {
+                  that.setData({
+                    bookname: "",
+                    bookcontent: "",
+                    bookcomment: ""
+                  })
                   setTimeout(function() {
-                    wx.switchTab({
-                      url: '/pages/discovery/discovery'
-                    })
+                    that.navigateTouserfeedmyshare()
                   }, 2000)
                 }
               })

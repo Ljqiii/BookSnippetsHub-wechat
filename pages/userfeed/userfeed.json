@@ -2,6 +2,7 @@
   "navigationBarBackgroundColor": "#1D82FE",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "我的收藏",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-row": "/vant/row/index",
     "van-col": "/vant/col/index",

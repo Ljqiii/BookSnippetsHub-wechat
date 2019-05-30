@@ -14,25 +14,33 @@
   background-color: transparent;
 }
 
-.scroll-x-item {  
+.scroll-x-item {
   text-align: center;
-  width: 110rpx;
-  height: 110rpx;
+  width: 160rpx;
+  height: 150rpx;
   display: inline-block;
 }
 
 .scroll-x-item image {
   padding-left: 10rpx;
   padding-right: 10rpx;
-  width: 195rpx;
-  height: 195rpx;
+  /* border: 3px solid #e8e8e8; */
+  width: 140rpx;
+  height: 140rpx;
 }
 
 .bottom {
   position: fixed;
   left: 0rpx;
-  bottom: 120rpx;
+  bottom: 130rpx;
 }
-.placeholderblack{
-  color:black;
+
+.placeholderblack {
+  color: black;
+}
+
+.bottom-text {
+  position: fixed;
+  left: 0rpx;
+  bottom: 285rpx;
 }

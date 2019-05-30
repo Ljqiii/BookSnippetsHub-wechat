@@ -1,6 +1,6 @@
 <!-- <include src="recommend.wxml" /> -->
 
-<van-tabs active="0" bind:change="onChange" animated>
+<van-tabs active="0" bind:change="onChange" animated color="#4d9af9">
   <van-tab title="推荐">
     <view style='height:10rpx'></view>
     <include src="recommend.wxml" />

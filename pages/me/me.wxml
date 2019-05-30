@@ -33,6 +33,7 @@
       <view class="text-black" catchtap='navigatetofollowerlist'>{{followerscount}}</view>
     </van-col>
   </van-row>
+  <view style='height:15rpx;border-bottom:1px solid #f4f4f4'></view>
 
   <!-- <van-cell icon="star" title="我的收藏" is-link  url="/pages/userfeed/userfeed"  link-type="navigateTo" /> -->
   <van-cell icon="star" title="我的收藏" is-link  catchtap="navigateTouserfeedmycollection" />
