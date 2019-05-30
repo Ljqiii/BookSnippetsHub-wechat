@@ -1,33 +1,28 @@
 <view style='height:10rpx'></view>
 
 <view wx:if="{{!loginbtn}}">
-
-  <view class="product-list">
-    <view class="product-item" wx:for="{{notifications}}" wx:for-index="index" wx:key="{{item.id}}">
-      <slide-delete pid="{{item.id}}" bindaction="handleSlideDelete" wx:key="{{item.id}}">
-
+  <view class="product-list" catchtap='navigateTofeedcomment' data-index='{{index}}'>
+    <view class="product-item" wx:for="{{notifications}}" wx:for-index="index" wx:key="{{item.id}}" data-index='{{index}}'>
+      <slide-delete pid="{{item.id}}" bindaction="handleSlideDelete" wx:key="{{item.id}}" data-index='{{index}}'>
         <van-row>
-          <van-col span="4">
-            <image wx:if="{{item.fromnickname =='系统消息'}}" style='margin-left:30rpx' class='image_css' src="{{baseurl}}{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{item.notificationid}}'></image>
-            <image wx:else style='margin-left:30rpx' class='image_css' src="{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{index}}'></image>
+          <van-col span="4" data-index='{{index}}'>
+            <image data-index='{{index}}' wx:if="{{item.fromnickname =='系统消息'}}" style='margin-left:30rpx' class='image_css' src="{{baseurl}}{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{item.notificationid}}'></image>
+            <image data-index='{{index}}' wx:else style='margin-left:30rpx' class='image_css' src="{{item.fromavatarurl}}" mode="aspectFit" data-notiid='{{index}}'></image>
           </van-col>
-          <van-col span="20">
-            <view style='height:10rpx'></view>
-            <view class='text_css' data-notiid='{{index}}' style='margin'>
-              <text class='name_fa' data-notiid='{{index}}'>{{item.fromnickname}}</text>
-              <text class='say_what' data-notiid='{{index}}'>{{item.msg}}</text>
+
+          <van-col span="20" data-index='{{index}}'>
+            <view style='height:10rpx' data-index='{{index}}'></view>
+            <view class='text_css' data-notiid='{{index}}' style='margin' data-index='{{index}}'>
+              <text class='name_fa' data-notiid='{{index}}' data-index='{{index}}'>{{item.fromnickname}}</text>
+              <text class='say_what' data-notiid='{{index}}' data-index='{{index}}'>{{item.msg}}</text>
             </view>
           </van-col>
-
         </van-row>
-
-
       </slide-delete>
     </view>
   </view>
-
-
 </view>
+
 
 <view wx:else>
 

@@ -6,7 +6,7 @@ import Toast from '../../vant/toast/toast';
 Page({
 
   data: {
-    isloading:true,
+    isloading: true,
     loginbtn: true,
     baseurl: "",
     notifications: [],
@@ -52,14 +52,14 @@ Page({
 
         notifications.splice(index, 1)
         that.setData({
-          notifications:notifications
+          notifications: notifications
         })
-    
+
 
         Toast.success({
-          duration: 800,      
-          forbidClick: true, 
-           message: '删除成功'
+          duration: 800,
+          forbidClick: true,
+          message: '删除成功'
         });
 
       }
@@ -94,7 +94,7 @@ Page({
   },
 
   onReachBottom: function() {
- 
+
   },
 
   onPullDownRefresh: function() {
@@ -128,11 +128,11 @@ Page({
   onLoad: function(options) {
     var that = this
 
-    setTimeout(function(){
+    setTimeout(function() {
       that.setData({
         isloading: false
       })
-    },400)
+    }, 400)
 
     wx.getSetting({
       success: res => {
@@ -182,6 +182,18 @@ Page({
 
   },
 
+  navigateTofeedcomment: function(e) {
+    console.log(e)
+    var index = e.target.dataset.index
+    if (this.data.notifications[index].feedid != null) {
+      wx.navigateTo({
+        url: '/pages/feedcomment/feedcomment?feedid=' + this.data.notifications[index].feedid,
+      })
+
+    }
+
+
+  },
 
 
   /**
