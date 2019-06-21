@@ -22,7 +22,11 @@
 
 效果图:
 
-![添加](./readmeimig/add.jpg)
+![添加](https://raw.githubusercontent.com/Ljqiii/BookSnippetsHub-wechat/master/readmeimg/add.jpg){:height="100px" width="100"}
+
+
+
+
 
 
 
